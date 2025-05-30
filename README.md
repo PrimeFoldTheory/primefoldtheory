@@ -1,16 +1,26 @@
-## Hi there 👋
+# Prime Fold Theory
 
-<!--
-**PrimeFoldTheory/primefoldtheory** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+A recursive model of structure, collapse, and emergence.
 
-Here are some ideas to get you started:
+This repository contains the foundational work of the Prime Fold Theory Initiative — an independent research effort exploring non-classical interpretations of gravitational and structural behavior in physical systems.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 📂 Contents
+
+- Theoretical documents (in development)
+- Simulation code and output (in progress)
+- Figures and visual models
+- Landing page for [primefoldtheory.org](https://www.primefoldtheory.org)
+
+## 📜 Licensing
+
+- 🔓 **Code and tools** are licensed under the [MIT License](LICENSE)
+- 🔒 **Written content, theory, figures** are licensed under a [custom license](LICENSE-content.md)
+
+Unauthorized reproduction or derivative work is not permitted without written consent. For inquiries, please contact:
+
+📫 **sean@primefoldtheory.org**
+
+---
+
+More details coming soon.
+
