@@ -39,6 +39,12 @@ A [Creative Commons Attribution 4.0 License (CC BY 4.0)](https://creativecommons
 
 ---
 
+📣 **arXiv Endorsement Invitation**
+
+This module is prepared for submission to arXiv under the `physics.space-ph` archive.  
+If you are an arXiv author in this category and believe this work is of interest,  
+please consider endorsing it.
+
 ## 📬 Contact
 
 **Email**: [Sean@PrimeFoldTheory.org](mailto:Sean@PrimeFoldTheory.org)  
