@@ -27,7 +27,7 @@ The paper presents a fold-based explanation for the stability of Quaoar’s ring
 
 ## ⚖️ License
 
-© 2025 Sean Sowden. — All rights reserved.  
+© 2025 Sean Sowden — All rights reserved.  
 This work is governed by a custom license pending formal release.
 
 Redistribution is permitted for:
