@@ -49,7 +49,7 @@ If you are an arXiv author in this category and believe this work is of interest
 please consider endorsing it.
 
 📩 Contact: [Sean@PrimeFoldTheory.org](mailto:Sean@PrimeFoldTheory.org)  
-📄 View the paper: [`quaoar_fold_complete_with_figures.pdf`](./quaoar_fold_complete_with_figures.pdf)
+📄 View the paper: [`quaoar_fold_complete_with_figures.pdf`](./paper/quaoar_fold_complete_with_figures.pdf)
 
 ---
 
