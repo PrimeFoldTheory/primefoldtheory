@@ -15,20 +15,18 @@ This repository hosts the versioned papers, notes, and artifacts for PFT.
 - 🧪 **LaTeX source:** [`paper/module1/Mod1v2.tex`](paper/module1/Mod1v2.tex)  
 - 🪐 **Original equation (Apr 2025) — Quaoar module:** [`quaoar_fold_complete_with_figures.pdf`](quaoar_fold_complete_with_figures.pdf)
 
-> These are **relative links** and work immediately on GitHub.  
-> Public site links (primefoldtheory.org) can be added once Pages finishes rebuilding.
+*(Relative links work immediately on GitHub. Public site links will match once Pages rebuilds.)*
 
 ---
 
-## What’s in Module I (Aug 2025 revision)
+## Module I (Aug 2025 revision) — What’s inside
 
-- Core quantities: **Fold Density (Φ), Fold-Time (τ̄), Threshold (κ)**  
-- **Duality as a structural mechanism** (persistence ↔ collapse)  
-- **Law of Structural Invariance**: conservation of *m* between events with flux accounting  
-- **PSP → SRF genesis** (pre-structural potential evolving into the SRF substrate)  
-- **Wave as the simplest fold** (organizing claim, not an axiom)  
-- Candidate **field equations** for SRF  
-- Conceptual applications only (e.g., Quaoar ring stability, double-slit, capillarity)
+- Core quantities: **Fold Density (Φ), Fold-Time (τ̄), Threshold (κ)**
+- **Duality as a structural mechanism** (persistence ↔ collapse)
+- **Law of Structural Invariance**: conservation of *m* between events with flux accounting
+- **PSP → SRF** genesis; **wave as the simplest fold** (organizing claim, not an axiom)
+- Candidate **field equations** for SRF
+- **Conceptual applications only** (Quaoar ring stability, double-slit, capillarity)
 
 **Status:** Theory-first paper. No experiments or sims included here; those land in later modules.
 
@@ -36,7 +34,7 @@ This repository hosts the versioned papers, notes, and artifacts for PFT.
 
 ## Provenance of the Original Ansatz
 
-The **earliest public record** of the original field ansatz appears in the **Quaoar module (Apr 2025)**.  
+The earliest public record of the original field ansatz appears in the **Quaoar module (Apr 2025)**.  
 **Module I (Aug 2025)** uses a **gated/truncated** revision.
 
 **Cite in text:** “See the Quaoar module for the original ansatz; this paper uses the August 2025 revised, gated form.”
@@ -45,6 +43,12 @@ The **earliest public record** of the original field ansatz appears in the **Qua
 - Current framework: [`paper/module1/Mod1v2.pdf`](paper/module1/Mod1v2.pdf)
 
 ---
+
+License
+
+© 2025 Sean Sowden. All rights reserved until formal release.
+If a LICENSE file is present, its terms govern.
+
 
 ## Build Locally (LaTeX)
 
