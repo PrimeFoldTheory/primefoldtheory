@@ -1,4 +1,3 @@
-Perfect—here’s a **clean, drop-in `README.md`** that keeps your style, fixes the math/formatting weirdness, and makes the Quaoar provenance crystal clear. Just paste this over your current README.
 
 ````markdown
 # Prime Fold Theory
