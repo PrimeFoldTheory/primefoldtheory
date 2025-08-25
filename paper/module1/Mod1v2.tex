@@ -1,0 +1,972 @@
+\documentclass[12pt]{article}
+
+% minimal, arXiv-safe
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{margin=1in}
+\setlength{\parskip}{0.8em}
+\setlength{\parindent}{0pt}
+
+% --- macros ---
+\newcommand{\FoldDensity}{\Phi}
+\newcommand{\FoldTime}{\bar{\tau}}
+\newcommand{\Threshold}{\kappa}
+\newcommand{\Survival}{S}
+\newcommand{\Release}{R}
+\newcommand{\SRF}{\mathcal{F}_{\mathrm{SR}}}
+
+% --- Make PDF bookmarks/ToC robust even if math sneaks into titles ---
+\pdfstringdefDisableCommands{%
+  \def\FoldDensity{Phi}%
+  \def\FoldTime{tau-bar}%
+  \def\Threshold{kappa}%
+  \def\SRF{SRF}%
+  \def\Survival{S}%
+  \def\Release{R}%
+  \def\bar#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathrm#1{#1}%
+  }
+\title{Prime Fold Theory: A Structural Framework for Recursive Dynamics}
+\author{Sean Sowden}
+\date{August 2025}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Prime Fold Theory (PFT) treats \emph{structural recursion} and \emph{thresholded release} as the primary drivers of change. Three primitives anchor the framework: Fold Density $\FoldDensity$ (local structural loading), Fold-Time $\FoldTime$ (a history-weighted tension accumulator), and Threshold $\Threshold$ (the local bound that triggers release). Between threshold events, the \emph{Law of Structural Invariance} asserts conservation of the product $\FoldDensity\,\FoldTime$ on closed domains up to a flux; at events, a reset map localizes/redistributes structure and sets $\FoldTime\!\to\!0$ locally. We introduce the \emph{Structural Recursive Field} ($\SRF$) as a substrate-agnostic carrier of recursion and transport so that persistence and collapse are two modes of one substrate. Transport may appear wave-like in coherent regimes; we treat this carefully in the Duality section and do not assume it universally. This theory-first paper formalizes the objects and law, sketches a candidate SRF field equation by structural analogy (persistence flow plus thresholded reset), and offers conceptual applications only; empirical calibration and simulations are deferred to later modules.
+\end{abstract}
+
+\tableofcontents
+
+% 1
+\section{Introduction}
+
+\paragraph{Context.}
+We aim to describe change as the interplay of two modes on one substrate: long runs of structural persistence punctuated by thresholded, localized releases. This addresses familiar tensions—smooth propagation vs.\ abrupt reorganization, geometry vs.\ singular events, reversible microdynamics vs.\ macroscopic irreversibility—without invoking observers.
+
+\paragraph{Origin (April 2025).}
+The original formulation treated Fold-Time $\FoldTime$ as a monotone accumulator of resisted equilibration. It captured the build-up intuition but carried history across collapses, blurring post-event locality. See Module IV (Quaoar): \href{https://primefoldtheory.org/paper/quaoar_fold_complete_with_figures.pdf}{QUAOAR.01 — Testing Recursive Boundaries (PDF)}.
+
+
+\paragraph{August 2025 revision (used here).}
+We adopt a \emph{truncated} $\FoldTime$ that resets to $0$ at collapse. After each release, the system re-enters persistence under new constraints; $\FoldTime$ then grows again until the next threshold. This preserves locality after events while retaining the pre-event memory needed to speak about hazard.
+
+\paragraph{Quantities and law.}
+Three primitives anchor the framework: Fold Density $\FoldDensity$ (local structural loading), Fold-Time $\FoldTime$ (history-weighted accumulator), and Threshold $\Threshold$ (local bound that gates release). Between threshold events, the \emph{Law of Structural Invariance} states that $\FoldDensity\,\FoldTime$ is conserved on closed domains up to a transport flux; at events, a reset map localizes/redistributes structure and sets $\FoldTime \to 0$ locally.
+
+\paragraph{SRF substrate.}
+We read $\FoldDensity$, $\FoldTime$, and $\Threshold$ from a substrate-agnostic \emph{Structural Recursive Field} $\SRF$—the carrier of recursion and transport—so that persistence and collapse are two modes of one substrate. (Where transport is coherent, it often appears wave-like; we treat that carefully in the Duality section, not here.)
+
+\paragraph{Scope and contributions.}
+This is a theory-first paper. We (i) formalize $\FoldDensity$, $\FoldTime$ (truncated), and $\Threshold$; (ii) state the invariance law and the survival/release view of the mode switch; (iii) articulate the $\SRF$ substrate and a candidate field-equation family by structural analogy; and (iv) provide conceptual applications (e.g., Quaoar, double-slit). Empirical calibration and simulations are deferred to later modules.
+
+% 2
+
+% --- BEGIN: Core Definitions (drop-in, safe) ---
+% Fallbacks so this compiles even if your preamble didn't define them
+\makeatletter
+\@ifundefined{texorpdfstring}{\newcommand{\texorpdfstring}[2]{#1}}{}
+\makeatother
+\providecommand{\FoldDensity}{\Phi}
+\providecommand{\FoldTime}{\bar{\tau}}
+\providecommand{\Threshold}{\kappa}
+\providecommand{\Survival}{S}
+\providecommand{\Release}{R}
+\providecommand{\SRF}{\mathcal{F}_{\mathrm{SR}}}
+
+\section{Core Definitions}
+
+\subsection[Fold Density (Phi)]{Fold Density $\FoldDensity$}
+An intensive measure of local recursive structure—how much structured loading a region carries.
+$\FoldDensity$ increases when recursive features reinforce or layer; it decreases when structure relaxes or disperses.
+In this paper, $\FoldDensity$ (i) participates in the conserved product $\FoldDensity\,\FoldTime$ between threshold events and
+(ii) is the quantity localized/redistributed at release.
+
+\subsection[Fold-Time (tau-bar), truncated]{Fold-Time $\FoldTime$ (truncated)}
+A history-weighted accumulator of resisted equilibration.
+During persistence, $\FoldTime$ grows; at a collapse event it \emph{resets to $0$ locally} and then begins accumulating again under post-event constraints.
+(The April~2025 “original” used a monotone $\FoldTime$ without reset; we use the truncated form throughout.)
+
+\subsection[Threshold (kappa)]{Threshold $\Threshold$}
+The local bound that gates the mode switch.
+As $\FoldTime$ approaches $\Threshold$ the hazard of release rises; when $\FoldTime$ crosses $\Threshold$, a release occurs,
+$\FoldTime$ resets to $0$ at that locus, and $\FoldDensity$ may be redistributed by the structural flux and the reset map.
+$\Threshold$ may vary across space or class but is treated as given by the framework.
+
+\subsection[Normalized fold-time (u)]{Normalized fold-time $u$}
+For hazard/survival statements we use $u := \FoldTime/\Threshold$.
+Here $u\in[0,\infty)$; “near-threshold’’ means $u\to 1^{-}$.
+This normalization makes comparisons across heterogeneous $\Threshold$ straightforward.
+
+\subsection{Structural mass--like product and flux}
+The product $\FoldDensity\,\FoldTime$ plays the role of a structural mass--like quantity.
+Between threshold events it satisfies continuity-style accounting on closed domains:
+changes inside are balanced by a boundary \emph{structural flux} $J$.
+The invariance law (next section) is agnostic to the exact closure for $J$ (coherent/wave-like vs.\ diffusive/intermittent).
+
+% --- Core Definitions: PSP (short)
+\subsection{Pre-Structural Potential (PSP)}\label{sec:psp-core}
+\textbf{Definition.} The Pre-Structural Potential (PSP) is the latent capacity of a domain to realize an $\SRF$ state under given constraints. It is not a field we evolve; it is the option set from which a concrete $\SRF$ instance is selected (see Sec.~\ref{sec:srf-psp}).
+
+\textbf{Minimal facts.}
+\begin{itemize}
+  \item PSP explains why the same substrate can yield different closures (diffusive, wave-like, mixed) as constraints change.
+  \item PSP is not part of the conserved product $m=\FoldDensity\,\FoldTime$ and does not enter budget audits between events.
+  \item Use PSP language only when two $\SRF$ parameterizations are observationally indistinguishable over a stated test class.
+\end{itemize}
+
+
+\subsection{SRF as substrate}
+Transport and accumulation occur on a substrate-agnostic \emph{Structural Recursive Field} ($\SRF$).
+We read $\FoldDensity$ (local loading), $\FoldTime$ (accrued, post-reset tension), and $\Threshold$ (local collapse bound) from SRF states and histories.
+Persistence vs.\ collapse is therefore a \emph{mode switch on one substrate}, not a change of ontology.
+
+\subsection{Out of scope}
+We do not fix units for $\FoldDensity$ or $\FoldTime$, a unique form for $J$, or a single $\SRF$ evolution equation.
+Those are \emph{admissible closures} developed later (e.g., coherent vs.\ diffusive transport; linear vs.\ weakly nonlinear persistence).
+What is fixed are the roles of $\FoldDensity$, $\FoldTime$, $\Threshold$ and the invariance they satisfy between events.
+
+% =========================================================
+% 3
+\section[Prime Fold Dynamics — original vs. August 2025; S and R]{Prime Fold Dynamics — original vs.\ August 2025; $\Survival$ and $\Release$}
+
+\subsection{Purpose}
+Formalize the mode switch between persistence and collapse with two functionals:
+\begin{itemize}
+  \item \emph{Survival} $\,\Survival(u)$ — governs persistence below threshold,
+  \item \emph{Release intensity} $\,\Release(\FoldTime,\FoldDensity)$ — governs collapse near/over threshold,
+\end{itemize}
+where the normalized accumulator is $u := \FoldTime/\Threshold$ (0 = far from release, 1 = threshold).
+
+\subsection{April 2025 ``original'' (monotone Fold-Time)}
+\textbf{Design.} $\FoldTime$ accumulated continuously across events (no resets).\\
+\textbf{Pro.} Captured the build-up intuition and made long-memory effects explicit.\\
+\textbf{Con.} Carried pre-event history into post-event evolution, weakening locality and making late dynamics overly path-dependent.
+
+\subsection{August 2025 revision (truncated Fold-Time; used here)}
+\textbf{Design.} At a release event, $\FoldTime$ \emph{resets to $0$ locally}; accumulation then resumes under new post-event constraints.\\
+\textbf{Effect.} Restores locality after collapse while retaining meaningful memory \emph{between} events.\\
+\textbf{Accounting.} Between events, the product $\FoldDensity\,\FoldTime$ obeys continuity-style conservation on closed domains (up to a structural flux $J$). The event itself is handled by a \emph{reset map} ($\FoldTime\!\to\!0$, $\FoldDensity$ localized/redistributed via $J$).
+
+\subsection[Survival S(u) — persistence gate]{Survival $\Survival(u)$ — persistence gate}
+\textbf{Role.} Modulates how readily structure persists/propagates as hazard grows.\\
+\textbf{Qualitative constraints (not fixing a formula):}
+\begin{itemize}
+  \item $\Survival(0)\approx 1$; $\Survival$ is non-increasing on $[0,1)$,
+  \item $\Survival(u)\to 0$ as $u\to 1^{-}$ (approaching threshold kills persistence),
+  \item regular near $u\approx 1^{-}$ (no artificial singularities),
+  \item optional gentle curvature (e.g., logistic-like) to reflect gradual hazard rise.
+\end{itemize}
+\textbf{Interpretation.} $\Survival$ weights transport/propagation while the system is sub-threshold.
+
+\subsection[Release R(tau-bar, Phi) — collapse gate]{Release $\Release(\FoldTime,\FoldDensity)$ — collapse gate}
+\textbf{Role.} Quantifies the \emph{local} propensity and strength of release near/over threshold.\\
+\textbf{Qualitative constraints (not fixing a formula):}
+\begin{itemize}
+  \item $\Release=0$ for $u<1$ (strictly sub-threshold),
+  \item grows smoothly for $u>1$ (soft threshold),
+  \item increases with (i) over-threshold amount and (ii) local $\FoldDensity$,
+  \item bounded/gently increasing derivatives near $u=1$ to avoid numerical stiffness later.
+\end{itemize}
+\textbf{Interpretation.} $\Release$ governs when a release initiates and how vigorous it is.
+
+\subsection{Event mechanics — reset map}
+\textbf{Trigger.} A release fires when a short-window hazard criterion (built from $\Release$) is met.\\
+\textbf{Action (local).}
+\begin{enumerate}
+  \item \emph{Localize/redistribute} $\FoldDensity$ according to the SRF-mediated flux $J$ (point-like or front-like),
+  \item \emph{reset} $\FoldTime\to 0$ on the affected support,
+  \item resume persistence under updated constraints (new geometry/loads/boundaries).
+\end{enumerate}
+\textbf{Scope.} Events can be isolated or clustered; concurrency is allowed if supports do not conflict.
+
+\subsection{Consequences of the August revision}
+\begin{itemize}
+  \item \textbf{Locality after collapse:} post-event evolution depends on the \emph{new} state, not ancient history,
+  \item \textbf{Comparable hazard across heterogeneous $\Threshold$:} normalization by $u=\FoldTime/\Threshold$,
+  \item \textbf{Transport-agnostic gate:} the same $\Survival/\Release$ gate applies whether $J$ is coherent (organized) or non-coherent (diffusive/intermittent); only the closure for $J$ changes.
+\end{itemize}
+
+\subsection{What is fixed vs.\ open}
+\textbf{Fixed.} Roles of $\FoldDensity$, truncated $\FoldTime$, $\Threshold$; normalization $u$; qualitative constraints on $\Survival$ and $\Release$; presence of a reset map at events.\\
+\textbf{Open (by design).} Specific parametric forms for $\Survival$ and $\Release$; the constitutive closure for $J$; any calibrated parameters (deferred to later modules).
+
+\subsection{Minimal recipe for applications (conceptual only)}
+\begin{enumerate}
+  \item Choose a transport closure for $J$ (coherent vs.\ diffusive/intermittent),
+  \item pick simple, regular families for $\Survival(u)$ and $\Release(\FoldTime,\FoldDensity)$ satisfying the constraints,
+  \item specify $\Threshold(x)$ and initial $\FoldDensity$, $\FoldTime$,
+  \item evolve: persistence under $\Survival$ until the $\Release$-trigger fires; apply the reset map; continue.
+\end{enumerate}
+
+
+% =========================================================
+% 4
+\section[Law of Structural Invariance]{Law of Structural Invariance (conservation of $\FoldDensity\,\FoldTime$)}
+
+\subsection[Statement (integral form)]{Statement (integral form)}
+Let $m := \FoldDensity\,\FoldTime$ be the structural mass--like density. For any fixed region $V$ with boundary $\partial V$ and outward normal $\mathbf{n}$,
+\begin{equation*}
+\frac{d}{dt}\int_V m\,dV \;=\; - \oint_{\partial V} J \cdot \mathbf{n}\, dA \;+\; S_V(t)
+\qquad\text{(between events).}
+\end{equation*}
+Here $J$ is the structural flux, and $S_V(t)$ is an optional source/sink term. In closed/periodic domains with $S_V=0$ and no boundary flux, $\int_V m\,dV$ is constant between events.
+
+\subsection[Local (differential) form]{Local (differential) form}
+Between events (no reset),
+\begin{equation*}
+\partial_t m \;+\; \nabla\!\cdot\! J \;=\; s(x,t),
+\end{equation*}
+with $s$ the source density (often $0$ in conceptual examples).
+
+\subsection[Event/jump condition (reset map)]{Event/jump condition (reset map)}
+At a release time $t_\ast$, on event support $E\subset V$:
+\begin{itemize}
+  \item \textbf{Reset:} $\FoldTime(x,t_\ast^{+}) = 0$ for $x\in E$.
+  \item \textbf{Redistribution:} $\FoldDensity$ may re-localize via an event-driven flux $J_{\mathrm{event}}$ concentrated near $E$.
+  \item \textbf{Balance across the instant:} for any $V$ containing $E$,
+\end{itemize}
+\begin{equation*}
+\int_V m(t_\ast^{+})\,dV - \int_V m(t_\ast^{-})\,dV
+= - \oint_{\partial V} \!\!\left[\int_{t_\ast^{-}}^{t_\ast^{+}} (J + J_{\mathrm{event}})\!\cdot\!\mathbf{n}\, dt\right] dA
+\;+\; \int_{t_\ast^{-}}^{t_\ast^{+}} \! S_V(t)\, dt .
+\end{equation*}
+
+\subsection[What the law fixes vs.\ leaves open]{What the law fixes vs.\ leaves open}
+\textbf{Fixed:} the conserved quantity $m=\FoldDensity\,\FoldTime$; continuity balance on any region; presence of a reset map at releases.\\
+\textbf{Open (by design):} constitutive closure for $J$ and $J_{\mathrm{event}}$; any explicit sources $s$ or $S_V$—these depend on the transport regime (coherent/wave-like vs.\ diffusive/intermittent).
+
+\subsection[Admissible flux closures (examples)]{Admissible flux closures (examples)}
+\begin{itemize}
+  \item \textbf{Coherent/advective:} $J = \mathbf{v}\, m$ (structured transport with velocity field $\mathbf{v}$).
+  \item \textbf{Diffusive:} $J = - D\, \nabla m$ (spreading down gradients).
+  \item \textbf{Mixed:} $J = \mathbf{v}\, m - D\, \nabla m + \text{(weak nonlinear terms)}$.
+\end{itemize}
+Any choice should keep the integral balance valid and remain regular as $u=\FoldTime/\Threshold \to 1^{-}$.
+
+\subsection[Practical consequences]{Practical consequences}
+\begin{itemize}
+  \item \textbf{Closed-box invariance:} with $S_V=0$ and no boundary flux, $\int_V m$ is constant between events—useful for checks/calibration.
+  \item \textbf{Open systems:} boundary terms dominate bookkeeping; invariance reduces to inflow/outflow accounting of $m$.
+  \item \textbf{Event auditability:} every release is measurable by the instantaneous drop of $\int_V m$ in any region enveloping the event support.
+\end{itemize}
+
+\subsection[Relation to duality and SRF]{Relation to duality and SRF}
+The law is substrate-agnostic: it holds whether SRF transport is coherent (often wave-like) or not. Duality appears as continuity dynamics under $J$ between events, and a reset/redistribution at events—two modes, one substrate, one accounting rule.
+
+
+% =========================================================
+% 5
+
+\section{Duality as a Structural Mechanism}
+
+\subsection{What we mean by ``duality''}
+Duality here is not two kinds of stuff. It is \emph{two modes of one substrate} ($\SRF$):
+\begin{itemize}
+  \item \textbf{Persistence (coherent transport):} structure carries forward; local loading accumulates.
+  \item \textbf{Collapse (localized release):} structure is gathered and discharged once a threshold is reached.
+\end{itemize}
+The mode switch is governed by $u := \FoldTime/\Threshold$ via the survival and release gates $\Survival(u)$ and $\Release(\FoldTime,\FoldDensity)$. No observer is required.
+
+\subsection{Coherent persistence (often wave-like)}
+When transport organizes (phase-coherent, low dispersion), $\SRF$ tends to form \emph{wave-like} patterns that move $\FoldDensity$ without immediately firing a release. In this regime:
+\begin{itemize}
+  \item A \emph{coherence window} (length/time) exists over which phases stay aligned,
+  \item the structural flux $J$ is effectively advective/oscillatory; $\FoldDensity$ is transported while $\FoldTime$ rises slowly,
+  \item \emph{terminus features} (nodes, phase defects, sharp gradients) are natural places for $\FoldTime$ to pile up.
+\end{itemize}
+
+\subsection{Collapse (localization mode)}
+As $u\to 1^{-}$, survival $\Survival(u)$ suppresses persistence and the release intensity $\Release$ grows.
+A \emph{reset map} fires on the event support: $\FoldTime \to 0$ locally, $\FoldDensity$ re-localizes via $J_{\mathrm{event}}$, and the system re-enters persistence under new constraints.
+Locality after collapse is restored by design.
+
+\subsection{Interface rules (persistence $\leftrightarrow$ collapse)}
+\begin{itemize}
+  \item \textbf{Trigger:} near-threshold hazard computed from $\Release$,
+  \item \textbf{Accounting:} the invariance law for $m=\FoldDensity\,\FoldTime$ holds between events; at events, the jump is balanced by boundary/event fluxes,
+  \item \textbf{Aftermath:} post-event states can seed fresh coherence (ring-down waves, fronts) or diffuse away—determined by the chosen closure for $J$.
+\end{itemize}
+
+\subsection{Waves as the simplest fold (claim, not axiom)}
+In coherent regimes, a wave is the Fold in motion: it transports structure, lets $\FoldTime$ accumulate toward $\Threshold$, and prepares release sites at terminus features.
+This is a useful, testable reading, not a universal postulate—when coherence is absent, other transport models stand in without changing the accounting.
+
+\subsection{Not universal}
+The framework is transport-agnostic. Diffusive, intermittent, or turbulent flows are admissible with an appropriate $J$.
+What remains fixed is the dual mode structure and the invariance of $\FoldDensity\,\FoldTime$ between threshold events.
+
+\subsection{Diagnostics and predictions (conceptual)}
+\begin{itemize}
+  \item \textbf{Coherence audit:} phase-locked transport, stable interference patterns, or low-dispersion fronts,
+  \item \textbf{Hazard map:} near-threshold regions cluster at nodes/defects; releases should nucleate there,
+  \item \textbf{Budget checks:} in closed domains, $\int \FoldDensity\,\FoldTime$ is constant between events; drops at releases match accounted fluxes.
+\end{itemize}
+
+\subsection{Relation to measurement talk}
+``Measurement'' is modeled as engineered collapse: boundary conditions and couplings that drive $u$ to $1$ locally.
+No extra ontology is added; the mode switch and reset map do the work.
+
+\subsection{Placement in the paper}
+Duality sits downstream of the invariance law and upstream of SRF/field-equation choices:
+one substrate, two modes, one accounting rule—then different closures for $J$ decide whether transport looks wave-like or not.
+
+
+% =========================================================
+% 6
+
+% =========================
+% 6. Structural Recursive Field (SRF)
+% =========================
+\section{Structural Recursive Field (SRF)}
+
+\subsection[Pre-Structural Potential (PSP) to SRF genesis]{Pre-Structural Potential (PSP) to SRF genesis}
+\paragraph{PSP (pre-substrate).}
+The Pre-Structural Potential is a \emph{pre-structured limit}: an undifferentiated capacity for recursion with
+no committed geometry, metric, transport law, or thresholds. In PSP there is no well-defined flux $J$, nor observables
+$\FoldDensity$, $\FoldTime$, or $\Threshold$—only admissible symmetries and constraints.
+
+\paragraph{Genesis: PSP $\to$ SRF.}
+$\SRF$ \emph{emerges} when constraints (boundaries, couplings, heterogeneities) break PSP’s indifference and select local structure.
+Operational coordinates and a state variable $X(x,t)$ become meaningful; reading operators and a transport closure come online.
+Conceptually,
+\[
+\mathcal{G}:\ (\text{PSP},\, \text{constraints}) \;\longrightarrow\;
+\bigl(X_0,\ \Threshold(x),\ \Pi_\Phi,\ \Pi_{\bar{\tau}},\ \Pi_\kappa,\ J[\cdot]\bigr).
+\]
+After genesis, the invariance law for $m=\FoldDensity\,\FoldTime$ applies between threshold events, and duality (persistence vs.\ collapse) is well-posed.
+
+\paragraph{Guardrails (what we are / are not claiming).}
+\begin{itemize}
+  \item \textbf{Not metaphysics:} PSP is a \emph{limit description} (pre-metric) rather than a hidden medium.
+  \item \textbf{No extra conservation in PSP:} $m=\FoldDensity\,\FoldTime$ is undefined until $\SRF$ and the reading operators exist.
+  \item \textbf{Local/causal emergence:} $\mathcal{G}$ is induced by actual constraints; no nonlocal jump or observer add-on.
+  \item \textbf{Testability deferred:} empirical signatures of genesis (e.g., universal early-time scaling before thresholds appear) are left to later modules.
+\end{itemize}
+
+\subsection{Purpose}
+Provide the substrate on which both modes—persistence and collapse—live. $\SRF$ carries transport, stores local loading, and hosts thresholded releases. $\FoldDensity$, $\FoldTime$, and $\Threshold$ are \emph{read from} $\SRF$, not added as separate ontologies.
+
+\subsection{Minimal objects}
+\begin{itemize}
+  \item \textbf{State:} $X(x,t)$ — an abstract field (possibly multi-component) holding whatever ``structure'' the medium supports.
+  \item \textbf{History/tension:} short-window functionals of $X$ define the Fold-Time $\FoldTime(x,t)$.
+  \item \textbf{Bounds:} material/geometry data bundled into $\Threshold(x)$ (may be piecewise or class-dependent).
+  \item \textbf{Flux carrier:} a constitutive map producing the structural flux $J[X;\nabla X,\dots]$.
+\end{itemize}
+
+\subsection{Reading operators (observables from SRF)}
+There exist local operators (or short-memory functionals)
+\[
+\Pi_\Phi[X] \to \FoldDensity,\qquad
+\Pi_{\bar{\tau}}[X,\text{history}] \to \FoldTime,\qquad
+\Pi_\kappa[\text{context}] \to \Threshold,
+\]
+so the measured quantities are $\FoldDensity=\Pi_\Phi[X]$, $\FoldTime=\Pi_{\bar{\tau}}[\cdot]$, and $\Threshold=\Pi_\kappa[\cdot]$.
+We do not require a unique choice—only that they are local/causal and compatible with the invariance law.
+
+\subsection{Timescales and mode split}
+\begin{itemize}
+  \item \textbf{Persistence timescale} $T_{\text{pers}}$: transport and slow accumulation ($u=\FoldTime/\Threshold<1$),
+  \item \textbf{Event timescale} $T_{\text{evt}}\ll T_{\text{pers}}$: fast, localized reset ($u\to 1$).
+\end{itemize}
+The separation makes ``continuity between events + jump at events'' well-posed.
+
+\subsection{Transport closures (examples, not commitments)}
+\begin{itemize}
+  \item \textbf{Coherent/advective:} $J = v[X]\,(\FoldDensity\FoldTime)$ with a phase-coherent velocity proxy $v$,
+  \item \textbf{Diffusive/intermittent:} $J = -D[X]\nabla(\FoldDensity\FoldTime)$,
+  \item \textbf{Mixed/weakly nonlinear:} $J = v\,m - D\nabla m + \epsilon\,\mathcal{N}[X]$ with $m=\FoldDensity\FoldTime$.
+\end{itemize}
+Any closure must satisfy the integral balance in Section~4 and remain regular as $u\to 1^{-}$.
+
+\subsection{Coherence window (when waves appear)}
+Given a closure, define a \emph{coherence window} (length/time) where phases remain aligned and dispersion small.
+In that window, transport often looks wave-like and terminus features (nodes/defects/steep gradients) naturally accumulate $\FoldTime$.
+
+\subsection{Event mechanics on SRF}
+\begin{itemize}
+  \item \textbf{Trigger:} a hazard built from $\Release(\FoldTime,\FoldDensity)$ crosses a local criterion,
+  \item \textbf{Reset operator:} $\mathcal{R}_E[X]$ acts on support $E$: sets $\FoldTime\to 0$ there, and applies an event flux $J_{\mathrm{event}}$ that localizes/redistributes $\FoldDensity$,
+  \item \textbf{Aftermath:} $\SRF$ resumes persistence with updated $X$ (hence updated $\FoldDensity,\Threshold$).
+\end{itemize}
+
+\subsection{Boundary and sources}
+Boundaries and couplings enter as: (i) constraints on $X$ (Dirichlet/Neumann-like) and (ii) explicit sources $s(x,t)$ or $S_V(t)$ in the invariance law.
+``Measurement'' is modeled as boundary/coupling choices that steer $u$ to $1$ locally.
+
+\subsection{Axioms vs.\ open choices}
+\textbf{Fixed:} one substrate $X$; local/causal reading of $\FoldDensity,\FoldTime,\Threshold$; continuity for $m=\FoldDensity\FoldTime$ between events; reset at events.\\
+\textbf{Open:} detailed form of $J$, $\mathcal{R}_E$, and the specific reading operators; parametric families for $\Survival$ and $\Release$.
+
+\subsection{Consistency checks}
+\begin{itemize}
+  \item \textbf{Accounting:} the Section~4 balance closes for any $V$,
+  \item \textbf{Locality:} post-event evolution depends on updated $X$, not pre-event history,
+  \item \textbf{Scalability:} same rules apply from lab setups (double-slit/fluids) to planetary rings (Quaoar) if appropriate closures/parameters are chosen.
+\end{itemize}
+section{Structural Recursive Field (SRF)}
+
+\subsection{Purpose}
+Provide the substrate on which both modes—persistence and collapse—live. $\SRF$ carries transport, stores local loading, and hosts thresholded releases. $\FoldDensity$, $\FoldTime$, and $\Threshold$ are \emph{read from} $\SRF$, not added as separate ontologies.
+
+\subsection{Minimal objects}
+\begin{itemize}
+  \item \textbf{State:} $X(x,t)$ — an abstract field (possibly multi-component) holding whatever ``structure'' the medium supports.
+  \item \textbf{History/tension:} short-window functionals of $X$ define the Fold-Time $\FoldTime(x,t)$.
+  \item \textbf{Bounds:} material/geometry data bundled into $\Threshold(x)$ (may be piecewise or class-dependent).
+  \item \textbf{Flux carrier:} a constitutive map producing the structural flux $J[X;\nabla X,\dots]$.
+\end{itemize}
+
+\subsection{Reading operators (observables from SRF)}
+There exist local operators (or short-memory functionals)
+\[
+\Pi_\Phi[X] \to \FoldDensity,\qquad
+\Pi_{\bar{\tau}}[X,\text{history}] \to \FoldTime,\qquad
+\Pi_\kappa[\text{context}] \to \Threshold,
+\]
+so the measured quantities are $\FoldDensity=\Pi_\Phi[X]$, $\FoldTime=\Pi_{\bar{\tau}}[\cdot]$, $\Threshold=\Pi_\kappa[\cdot]$.
+We never require a unique choice—only that they are local/causal and compatible with the invariance law.
+
+\subsection{Timescales and mode split}
+\begin{itemize}
+  \item \textbf{Persistence timescale} $T_{\text{pers}}$: transport and slow accumulation ($u=\FoldTime/\Threshold<1$),
+  \item \textbf{Event timescale} $T_{\text{evt}}\ll T_{\text{pers}}$: fast, localized reset ($u\to 1$).
+\end{itemize}
+The separation makes ``continuity between events + jump at events'' well-posed.
+
+\subsection{Transport closures (examples, not commitments)}
+\begin{itemize}
+  \item \textbf{Coherent/advective:} $J = v[X]\,(\FoldDensity\FoldTime)$ with a phase-coherent velocity proxy $v$,
+  \item \textbf{Diffusive/intermittent:} $J = -D[X]\nabla(\FoldDensity\FoldTime)$,
+  \item \textbf{Mixed/weakly nonlinear:} $J = v\,m - D\nabla m + \epsilon\,\mathcal{N}[X]$ with $m=\FoldDensity\FoldTime$.
+\end{itemize}
+Any closure must satisfy the integral balance (Section~\ref{sec:invariance}) and remain regular as $u\to 1^{-}$.
+
+\subsection{Coherence window (when waves appear)}
+Given a closure, define a \emph{coherence window} (length/time) where phases remain aligned and dispersion small.
+In that window, transport looks wave-like and terminus features (nodes/defects/steep gradients) naturally accumulate $\FoldTime$.
+
+\subsection{Event mechanics on SRF}
+\begin{itemize}
+  \item \textbf{Trigger:} a hazard built from $\Release(\FoldTime,\FoldDensity)$ crosses a local criterion,
+  \item \textbf{Reset operator:} $\mathcal{R}_E[X]$ acts on support $E$: sets $\FoldTime\to 0$ there, and applies an event flux $J_{\mathrm{event}}$ that localizes/redistributes $\FoldDensity$,
+  \item \textbf{Aftermath:} $\SRF$ resumes persistence with updated $X$ (hence updated $\FoldDensity,\Threshold$).
+\end{itemize}
+
+\subsection{Boundary and sources}
+Boundaries and couplings enter as: (i) constraints on $X$ (Dirichlet/Neumann-like) and (ii) explicit sources $s(x,t)$ or $S_V(t)$ in the invariance law.
+``Measurement'' is modeled as boundary/coupling choices that steer $u$ to $1$ locally.
+
+\subsection{Axioms vs.\ open choices}
+\textbf{Fixed:} one substrate $X$; local/causal reading of $\FoldDensity,\FoldTime,\Threshold$; continuity for $m=\FoldDensity\FoldTime$ between events; reset at events.\\
+\textbf{Open:} detailed form of $J$, $\mathcal{R}_E$, and the specific reading operators; parametric families for $\Survival$ and $\Release$.
+
+\subsection{Consistency checks}
+\begin{itemize}
+  \item \textbf{Accounting:} the Section~\ref{sec:invariance} balance closes for any $V$,
+  \item \textbf{Locality:} post-event evolution depends on updated $X$, not pre-event history,
+  \item \textbf{Scalability:} same rules apply from lab setups (double-slit/fluids) to planetary rings (Quaoar) if appropriate closures/parameters are chosen.
+\end{itemize}
+
+\subsection{Placement in the paper}
+$\SRF$ sits between duality (conceptual mode split) and the candidate field equation (next section):
+define the substrate and reading maps first; then propose evolution forms consistent with the invariance law.
+\subsection{Placement in the paper}
+$\SRF$ sits between duality (conceptual mode split) and the candidate field equation (next section):
+define the substrate and reading maps first; then propose evolution forms consistent with the invariance law.
+
+
+% ==========================================================
+% 7
+
+\section[Field Equations for SRF (candidate forms)]{Field Equations for $\SRF$ (candidate forms)}
+
+\subsection{Design principles}
+\begin{itemize}
+  \item \textbf{Local, causal, two-mode:} between events we evolve fields continuously; at events we apply a reset map.
+  \item \textbf{Primary conserved density:} $m := \FoldDensity\,\FoldTime$ obeys continuity between events.
+  \item \textbf{Gates not forms:} $\Survival(u)$ and $\Release(\FoldTime,\FoldDensity)$ gate persistence vs.\ release but do not by themselves fix transport.
+  \item \textbf{Hyperbolic option in coherent windows:} when transport organizes, a wave-like closure is natural; otherwise use diffusive or mixed closures.
+\end{itemize}
+
+\subsection{State choice}
+We present two equivalent viewpoints for the \emph{between-events} evolution.
+\begin{description}
+  \item[(A) Conservative pair $(m,\FoldTime)$:] evolve the conserved density $m=\FoldDensity\,\FoldTime$ and the accumulator $\FoldTime$; recover $\FoldDensity = m/\FoldTime$ where $\FoldTime>0$.
+  \item[(B) Direct pair $(\FoldDensity,\FoldTime)$:] evolve $\FoldDensity$ and $\FoldTime$ with a product law ensuring the continuity of $m$.
+\end{description}
+Events are handled in either case by the same reset map ($\FoldTime\!\to\!0$ on the event support plus an event flux).
+
+\subsection{Minimal first-order system (between events)}
+Let $u:=\FoldTime/\Threshold$ and choose a generic transport closure $\hat J$.
+\begin{align*}
+\partial_t m \;+\; \nabla\!\cdot J \;&=\; s(x,t), \qquad (s=0 \text{ in many conceptual uses}) \\
+\partial_t \FoldTime \;&=\; \eta\,\FoldDensity \;-\; \varepsilon\,\FoldTime, \qquad \FoldDensity=\frac{m}{\FoldTime}\ \ (\FoldTime>0),\\
+J \;&=\; \Survival(u)\,\hat J[\cdot] \quad \text{(transport naturally fades as $u\to 1^{-}$).}
+\end{align*}
+Here $\eta>0$ encodes how structure loads tension; $\varepsilon\ge 0$ is an optional slow leak (often set to $0$). The choice of $\hat J$ determines the dynamics (advective, diffusive, mixed).
+
+\subsection[Wave-limit closure (coherent window)]{Wave-limit closure (coherent window; hyperbolic form)}
+Introduce a flux-momentum $P$ so the pair $(m,P)$ is hyperbolic:
+\begin{align*}
+\partial_t m \;+\; \nabla\!\cdot P \;&=\; s,\\
+\partial_t P \;+\; c^2\,\nabla m \;&=\; -\,\gamma\,P \;+\; \sigma,
+\end{align*}
+with signal speed $c=c(x,t;\Threshold,\FoldDensity)$ and damping $\gamma\ge 0$. Eliminating $P$ gives a damped wave equation for $m$:
+\[
+\partial_t^2 m \;+\; \gamma\,\partial_t m \;-\; c^2\Delta m \;=\; \partial_t s \;+\; \nabla\!\cdot \sigma.
+\]
+\textbf{Gating:} set $c^2 \gets c_0^2\,\Survival(u)$ so propagation slows as $u\to 1^{-}$. \emph{Reading back} $\FoldDensity$ uses $\FoldDensity=m/\FoldTime$ between events.
+
+\subsection{Event operator (collapse)}
+When a local hazard built from $\Release(\FoldTime,\FoldDensity)$ crosses threshold:
+\begin{itemize}
+  \item \textbf{Reset:} $\FoldTime \to 0$ on the event support $E$,
+  \item \textbf{Event flux:} add a short pulse $J_{\mathrm{event}}$ (or $\sigma$ in the hyperbolic form) to localize/redistribute $\FoldDensity$,
+  \item \textbf{Accounting:} the jump in $\int_V m$ over the event instant equals the net boundary/event flux plus any prescribed source (see the invariance law).
+\end{itemize}
+
+\subsection{Stability and positivity (proof obligations)}
+\begin{itemize}
+  \item \textbf{Positivity:} if $m,\FoldTime\ge 0$ initially and $\Survival(u)\in[0,1]$, the first-order system preserves non-negativity; the hyperbolic wave-limit with $\gamma\ge 0$ keeps $L^2$ energy bounded on finite time.
+  \item \textbf{Well-posedness:} choose $c,\gamma,\eta,\varepsilon$ and closures so the between-events system is hyperbolic or parabolic-well-posed, Lipschitz in $(m,\FoldTime)$, and free of singularities as $u\to 1^{-}$.
+\end{itemize}
+
+\subsection[Compact candidate in $(\FoldDensity,\FoldTime)$ form]{Compact candidate in $(\FoldDensity,\FoldTime)$ form (between events)}
+With $u=\FoldTime/\Threshold$, let
+\begin{align*}
+\partial_t \FoldDensity \;+\; \nabla\!\cdot\!\big(\Survival(u)\,V\,\FoldDensity\big) \;&=\; D\,\Delta \FoldDensity \;+\; s_\Phi,\\
+\partial_t \FoldTime \;&=\; \eta\,\FoldDensity \;-\; \varepsilon\,\FoldTime,
+\end{align*}
+and define $m=\FoldDensity\,\FoldTime$. This pair reproduces the continuity of $m$ up to explicit $D,\varepsilon,s_\Phi$ terms in the bookkeeping. In a coherent window, replace the advective part with the wave-limit $(m,P)$ closure.
+
+\subsection{Relation to Einstein and Schr\"odinger (heuristic map)}
+\textbf{Schr\"odinger (unitary, dispersive):} the probability continuity equation mirrors the continuity for $m$. In coherent $\SRF$ windows, the wave-limit can reproduce interference and phase transport; \emph{collapse} is the event/reset map rather than an axiom. Mapping $|\psi|^2 \leftrightarrow \FoldDensity$ is a \emph{reading}, not an identity, valid only where a coherent closure applies.\\
+\textbf{Einstein (geometric):} GR encodes dynamics in geometry; here dynamics are encoded in $m$ and flux with thresholds. Coupling is conceivable via $\Threshold$ or $c(\cdot)$ depending on curvature/stress, yielding GR-like causal cones in coherent limits. No claim of full equivalence; the point is local, causal propagation and conservation structures that can be tuned to match gravitational-wave-like signals.
+
+\subsection{Fixed vs.\ open}
+\textbf{Fixed:} conservation of $m$ between events; existence of a survival-gated transport closure; existence of an event/reset operator; non-negativity and locality.\\
+\textbf{Open:} exact forms of $c,\gamma,\eta,\varepsilon$; precise parameterizations of $\Survival$ and $\Release$; coupling of $\Threshold$ to geometry or matter; domain-specific closures for $J$ or $(m,P)$, deferred to later modules.
+
+% ==========================================================
+% 8
+
+\section{Applications (conceptual only)}
+
+\subsection{Usage pattern (checklist)}
+\begin{enumerate}
+  \item Choose regime: coherent (wave-like) vs.\ diffusive/mixed.
+  \item Specify $\Threshold(x)$ and boundary conditions.
+  \item Seed $\FoldDensity$ and $\FoldTime$.
+  \item Track hazard $u=\FoldTime/\Threshold$ during evolution.
+  \item When $u\approx 1$, fire a release on its support, reset $\FoldTime\to 0$, account the event flux, and resume.
+  \item Audit $\int m\,dV$ with $m=\FoldDensity\,\FoldTime$ between events.
+\end{enumerate}
+
+\subsection{Planetary rings (Quaoar, ``7.24 r'')}
+\textbf{Reading.} The ring acts as a long-lived, near-coherent transport loop: $J$ is dominantly advective/oscillatory. Standing-fold structure forms, with nodes where $\FoldTime$ tends to pile up.\\
+\textbf{Beyond Roche.} Persistence is governed by $\Survival(u)$; near nodes $\Survival\!\downarrow$ and small releases recycle $\FoldDensity$ without catastrophic dispersal, keeping $m$ balanced around the loop.\\
+\textbf{Predictions (conceptual).} (i) Node/antinode surface-density pattern correlated with weak release sites; (ii) slow breathing modes after perturbations; (iii) an invariance budget with $\int_{\text{annulus}} \FoldDensity\FoldTime$ roughly constant between sporadic releases.
+
+\subsection{Double-slit (single quanta, bright screen)}
+\textbf{Reading.} Upstream coherence splits through slits; on the screen, terminus features (nodes/antinodes) set where $\FoldTime$ accumulates. Releases nucleate at near-threshold pixels, localizing $\FoldDensity$ (with $\FoldTime\to 0$ there).\\
+\textbf{No observer postulate.} ``Measurement'' is boundary/coupling that drives local $u\to 1$.\\
+\textbf{Predictions.} (i) Shrink the coherence window $\Rightarrow$ fringe visibility drops; (ii) thicken/roughen the barrier $\Rightarrow$ terminus pattern flattens; (iii) with the same $J$, the integral budget $\int m$ holds between events, and release-site statistics mirror the interference envelope of $J$.
+
+\subsection{Capillary action (rise and contact-line dynamics)}
+\textbf{Reading.} Curvature and wetting set $\Threshold(x)$; transport of $m$ toward the contact line builds $\FoldTime$ until micro-releases (pin--slip) reset $\FoldTime$ locally.\\
+\textbf{Outcome.} Stepwise rise emerges from alternating persistence and localized collapse.\\
+\textbf{Predictions.} (i) Hysteresis width tracks the statistics of releases; (ii) patterned substrates modulate $\Threshold(x)$, creating preferred nucleation lattices.
+
+\subsection{Caustics and focusing (optical/gravitational analogy)}
+\textbf{Reading.} In focusing geometries (lenses, curved interfaces, gravitational potentials), coherence guides $J$ along converging path families. Caustics are terminus-like structures where phases align and gradients steepen, so $\FoldTime$ naturally accumulates.\\
+\textbf{Outcome.} Intensity peaks correspond to near-threshold regions where small releases localize $\FoldDensity$ without violating the integral budget.\\
+\textbf{Predictions.} (i) Smoothing the focusing geometry or adding controlled disorder narrows the coherence window and broadens peaks; (ii) small geometry changes move caustic lines predictably; (iii) after perturbations, ring-down fronts carry $m$ away while $\int m$ remains conserved between events.
+
+\subsection{Cavitation and micro-fracture (materials)}
+\textbf{Reading.} $\Threshold(x)$ tracks local strength; transport under load concentrates at defects; when $u\to 1$, a release (void/cracklet) resets $\FoldTime$ and redistributes $\FoldDensity$ via $J_{\mathrm{event}}$.\\
+\textbf{Predictions.} (i) Acoustic precursors as ring-down waves after releases; (ii) Gutenberg--Richter-like tails if $\Release$ allows clustered events.
+
+\subsection{What counts as a ``win''}
+\textbf{Structural bookkeeping.} For each case, a plausible $J$, $\Threshold(x)$, and gates $\Survival,\Release$ should reproduce: (i) where persistence looks organized vs.\ not, (ii) where releases nucleate, and (iii) closure of the $\int m$ budget between events.\\
+\textbf{Transport-agnostic.} In non-coherent domains, swap the wave closure for a diffusive/mixed $J$ and repeat the same accounting.
+
+\subsection{Falsifiability and red lines}
+\textbf{Budget failure:} persistent violations of $\int m$ invariance between events under well-posed boundaries.\\
+\textbf{Reset pathology:} post-event evolution depends on deep history after $\FoldTime\to 0$ locally (breaks locality).\\
+\textbf{Trigger mismatch:} releases occur far from predicted near-threshold loci despite reasonable $J$ and $\Threshold$.
+
+\subsection{Placement}
+These are conceptual audits only. Detailed parameterizations and any simulations/experiments are deferred to later modules; here they show how $\SRF$ + invariance + duality organize phenomena without extra ontologies.
+
+% ===========================================================
+% 9
+
+\section{Relation to existing theories}
+
+\subsection{Positioning}
+The framework treats physics as one substrate ($\SRF$) with two modes (persistence vs.\ collapse) and a conserved product $m=\FoldDensity\,\FoldTime$ between events. Existing theories are read as \emph{regimes or closures} of transport $J$ and hazard/threshold structure, not as things $\SRF$ replaces wholesale.
+
+\subsection{Classical continuum limits (fluids, elasticity, waves)}
+With slowly varying thresholds and no events, the conservative form
+$\partial_t m+\nabla\!\cdot J=0$ plus a closure for $J$ recovers standard PDE behaviors:
+\begin{itemize}
+  \item \textbf{Advection--diffusion:} $J=v\,m-D\nabla m$ $\Rightarrow$ transport and spreading of a scalar.
+  \item \textbf{Wave/telegraph:} adding a flux momentum $P$ yields finite-speed propagation and ring-down; covers acoustics-like limits.
+  \item \textbf{Elastic/slow manifolds:} encode stick--slip via $\Threshold(x)$ and thresholded releases.
+\end{itemize}
+\textit{Takeaway:} classical fields appear as $\SRF$ persistence-only regimes under specific closures.
+
+\subsection{Thermodynamics and statistical mechanics}
+Event statistics (triggered when $u=\FoldTime/\Threshold\to 1$) play the role of activated processes; $\FoldTime$ is a memory/tension variable whose resets encode irreversibility. Coarse-graining over many events yields familiar relaxation laws and heavy-tailed waiting times when $\Release$ admits clustering. The second-law arrow is attributed to the reset map + hazard rather than microscopic nonreversibility during persistence.
+
+\subsection{Quantum mechanics (measurement and interference)}
+\textbf{Interference:} coherent $\SRF$ windows reproduce phase-structured transport; the continuity of $m$ mirrors the probability continuity in QM.\\
+\textbf{Measurement:} localized ``collapse'' is a thresholded release driven by boundary/coupling---no observer postulate added.\\
+\textbf{Scope of claim:} single-system coherence and screen localization fit naturally; multipartite entanglement, Bell tests, and nonlocal correlations are deferred to later modules (no completed account is claimed).\\
+\textbf{Relation to interpretations:} overlaps with pilot-wave in using a guided transport picture, but $\SRF$ posits a single substrate with explicit threshold dynamics; it is not Many-Worlds and does not adopt Copenhagen's axiom of collapse.
+
+\subsection{Quantum field theory and gauge structure}
+$\SRF$ can emulate wave propagation and interference but does not yet encode internal symmetries or gauge invariance. Any mapping of $\FoldDensity$ onto field intensities is a reading, not an identity. Introducing gauge-like structure would require additional state components in $X$ and symmetry constraints in $J$; this is open work, not claimed.
+
+\subsection{General relativity (GR)}
+The hyperbolic closure defines causal cones via a local speed $c(\cdot)$. Coupling $\Threshold$ or $c$ to stress/geometry provides a path to GR-like phenomenology (e.g., gravitational-wave-like propagation) without rederiving curvature dynamics. We do not claim equivalence to Einstein's equations; we claim local, causal propagation and thresholded events that can be tuned to respect GR causality.
+
+\subsection{Nonlinear dynamics and excitable media}
+With hazard and reset, $\SRF$ parallels excitable systems (neurons, reaction--diffusion with thresholds, fracture cascades). The advantage is a unified accounting: the same $m$ balance governs where waves, pulses, or avalanches appear.
+
+\subsection{Information/estimation viewpoint}
+``Measurement'' is engineered collapse: boundary conditions raise hazard so that releases localize structure where readout occurs. Coherence windows act like effective SNR; shrinking them kills fringes and promotes diffusion---matching practical decoherence knobs without invoking observers.
+
+\subsection{Symmetry, conservation, and Noether}
+Between events the continuity of $m$ functions like a conservation law. It is structural, not derived from a variational symmetry here. If a Lagrangian representation for $(X,J,\FoldTime)$ is later supplied, Noether-type theorems could recover the same bookkeeping; until then, the invariance is an axiom tied to locality and reset rules.
+
+\subsection{What is new vs.\ what is recovered}
+\textbf{New:} one-substrate, two-mode mechanics with an explicit threshold/reset layer; a single conserved product $m=\FoldDensity\FoldTime$ between events; transport-agnostic closures; a PSP$\to\SRF$ genesis explaining why different closures appear.\\
+\textbf{Recovered (as limits):} advection/diffusion, finite-speed waves, interference patterns, stick--slip, avalanche-like cascades.\\
+\textbf{Outside scope (for now):} full gauge/QFT structure; a worked account of entanglement/nonlocality; exact GR dynamics.
+
+\subsection{Discriminators (how to tell $\SRF$ from look-alikes)}
+\begin{itemize}
+  \item \textbf{Hazard-locked nucleation:} releases nucleate at near-threshold loci predicted by $\FoldTime/\Threshold$, not arbitrarily.
+  \item \textbf{Budget audits:} $\int m$ over closed domains remains constant between events; drops occur only via boundary/event terms.
+  \item \textbf{Coherence-window tuning:} systematic knobs that shrink coherence suppress interference via $\Survival(u)$ even without which-path information.
+\end{itemize}
+
+% ===========================================================
+% 10
+
+\section{Math program}
+
+\subsection{Aim}
+Formalize $\SRF$ as a hybrid (continuous + event) field theory with a conserved product $m=\FoldDensity\,\FoldTime$ between events, thresholded releases at $u=\FoldTime/\Threshold \to 1$, and transport closures that cover coherent (wave-like) and noncoherent (diffusive/mixed) regimes.
+
+\subsection{Objects and spaces}
+\begin{itemize}
+  \item \textbf{State:} $X(\cdot,t)\in\mathcal{X}$ (Banach/Hilbert), with readings
+  \[
+  \Pi_\Phi[X]\to \FoldDensity\ge 0,\qquad
+  \Pi_{\bar\tau}[X;\text{history}]\to \FoldTime\ge 0,\qquad
+  \Pi_\kappa[\text{context}]\to \Threshold>0,
+  \]
+  and $m=\FoldDensity\,\FoldTime\ge 0$.
+  \item \textbf{Regularity (working assumptions):} $X$ piecewise $H^1$ in space, Lipschitz in time between events; $\FoldDensity,\FoldTime\in L^\infty\cap BV$ locally; $\Threshold\in L^\infty$ with positive essential infimum.
+  \item \textbf{Flux:} $J=J[X;\nabla X,\ldots]$ measurable, locally Lipschitz in its arguments; optional flux momentum $P$ in coherent windows.
+\end{itemize}
+
+\subsection{Axioms (mathematical form)}
+\begin{itemize}
+  \item \textbf{Locality/causality:} readings depend on $X$ and short history only.
+  \item \textbf{Between events:} continuity of $m$ and accumulator evolution
+  \[
+  \partial_t m+\nabla\!\cdot J=s,\qquad
+  \partial_t\FoldTime=\eta\,\FoldDensity-\varepsilon\,\FoldTime,\quad \eta>0,\ \varepsilon\ge 0.
+  \]
+  \item \textbf{Events (collapse):} when a hazard $H(\FoldTime,\FoldDensity,\Threshold,\ldots)$ crosses $1$ on support $E\subset\Omega$:
+  $\FoldTime|_E\to 0$ and add a bounded event flux $J_{\text{event}}$ (or $\sigma$ in the hyperbolic form).
+  \item \textbf{Gates:} $\Survival(u)\in[0,1]$ nonincreasing, Lipschitz, $\Survival(0)=1$, $\lim_{u\to 1^-}\Survival(u)=0$; release map $\Release$ induces a monotone hazard $H$.
+  \item \textbf{Invariance:} for any $V\subset\Omega$ between events,
+  \[
+  \frac{d}{dt}\int_V m\,dV \;=\; -\int_{\partial V}J\cdot n\,dA + \int_V s\,dV,
+  \]
+  with the corresponding jump accounting across events via $J_{\text{event}}$.
+\end{itemize}
+
+\subsection{Between-events PDEs (well-posedness targets)}
+\begin{itemize}
+  \item \textbf{Diffusive/mixed closure (parabolic):} $J = -D\nabla m + v\,m + \epsilon\,\mathcal{N}[X]$ with $D\ge 0$. Targets: existence/uniqueness of weak solutions; comparison/positivity principles for $m,\FoldTime$; global bounds for $s\in L^1$.
+  \item \textbf{Advective closure (hyperbolic conservation law):} $J=f(m,x,t)$ with $f$ Lipschitz. Targets: Kružkov-type entropy solutions; positivity preservation.
+  \item \textbf{Wave-limit (telegraph system):}
+  \begin{align*}
+  \partial_t m+\nabla\!\cdot P &= s,\\
+  \partial_t P + c^2\nabla m &= -\gamma P + \sigma,
+  \end{align*}
+  with $0\le c^2\le c_0^2\,\Survival(u)$, $\gamma\ge 0$. Targets: energy estimate, finite speed, well-posedness on bounded domains.
+\end{itemize}
+
+\subsection{Event mechanism as a hybrid law}
+\begin{itemize}
+  \item \textbf{Hazard field:} $H(x,t)=\mathcal{H}(\FoldTime/\Threshold,\FoldDensity;\text{params})$, e.g.\ $H=(\FoldTime/\Threshold)^\alpha g(\FoldDensity)$.
+  \item \textbf{Event set:} $E(t)=\{x:\ H(x,t)\ge 1\}$ with measurable selection; reset operator $\mathcal{R}_{E}$ acting on $X$ (hence on $\FoldDensity,\FoldTime$).
+  \item \textbf{Jump condition:} for any $V$,
+  \[
+  \int_V \!\big(m(t^+)-m(t^-)\big)\,dV = -\!\!\int_{t^-}^{t^+}\!\!\!\int_{\partial V}\!(J+J_{\text{event}})\cdot n\,dA\,dt + \!\int_{t^-}^{t^+}\!\!\!\int_V s\,dV\,dt.
+  \]
+  \item \textbf{Anti-Zeno:} assume $H(\FoldTime{=}0,\FoldDensity)\le 1-\delta$ and $\partial_t H$ bounded $\Rightarrow$ no infinite event accumulation in finite time.
+\end{itemize}
+
+\subsection{Coherence window (when wave closure is valid)}
+\begin{itemize}
+  \item \textbf{Definition:} a spacetime slab is coherent if phase misalignment grows slower than transport, e.g.\ Péclet-type ratio $\mathrm{Pe}_\phi=(|v|L)/D_\phi\gg 1$ and small dispersion $\mathcal{D}_\text{phase}$ over $(L,T)$.
+  \item \textbf{Operational test:} gradient/curvature criteria for $m$ (or $X$) ensuring a telegraph reduction with error $O(\epsilon)$; bounds under which $c^2$ is slowly varying and gated by $\Survival(u)$.
+\end{itemize}
+
+\subsection{PSP to SRF formalization}
+\begin{itemize}
+  \item \textbf{Genesis map:} $\mathcal{G}:\ (\text{constraints})\mapsto (X_0,\Threshold,\Pi_\Phi,\Pi_{\bar\tau},\Pi_\kappa,J)$.
+  \item \textbf{Results to prove:} existence under mild constraints; stability (small constraint changes $\Rightarrow$ small changes in readings/flux in operator norm); nonuniqueness classes.
+  \item \textbf{Equivalence:} two $\SRF$ instantiations are equivalent if they induce identical $m$-balances and event sets for a common class of tests.
+\end{itemize}
+
+\subsection{Energy and entropy estimates}
+\begin{itemize}
+  \item \textbf{Wave energy:} with $E=\tfrac12\!\left(\|P\|_{L^2}^2/c_0^2+\|m\|_{L^2}^2\right)$,
+  \[
+  \dot E \;\le\; -\gamma\,\|P\|_{L^2}^2 + \langle \partial_t s+\nabla\!\cdot\sigma,\, m\rangle.
+  \]
+  \item \textbf{Parabolic entropy:} for $D>0$, derive $L^1/L^2$ decay or smoothing for $m$; maximum principle for $m,\FoldTime$ under reflective/inflow BCs.
+  \item \textbf{Threshold approach:} $\Survival(u)$ enforces bounded flux as $u\to 1^-$ (no transport blow-up).
+\end{itemize}
+
+\subsection{Nondimensionalization and regimes}
+Choose $(L_0,T_0,M_0)$ to scale $x,t,m$. Key groups: $\mathrm{Pe}=(|v|L_0)/D$ (transport), $\mathrm{Da}=\eta T_0$ (loading), $\Gamma=\gamma T_0$ (damping), $\Upsilon = T_{\text{evt}}/T_{\text{pers}}$ (mode separation), $C_0=c_0 T_0/L_0$ (wave speed). Map domains (coherent/high-$\mathrm{Pe}$, diffusive/low-$\mathrm{Pe}$, mixed) and state which theorems apply where.
+
+\subsection{Numerical program (event-aware solvers)}
+\begin{itemize}
+  \item \textbf{Schemes:} finite-volume for $\partial_t m+\nabla\!\cdot J$ (flux limiters for positivity); IMEX for stiff terms; hyperbolic part: Riemann solvers for the $(m,P)$ telegraph system with gated $c^2$.
+  \item \textbf{Event detection:} cellwise hazard $H$; substep root-finding for $H=1$; apply $\FoldTime\to 0$ and $J_{\text{event}}$ with conservative updates.
+  \item \textbf{Budgets:} stepwise audits of $\int m$ between events and jump accounting at events; automated failure flags.
+  \item \textbf{Convergence:} $L^1$ (parabolic) or energy-stable (telegraph) convergence; positivity preservation; CFL bound $\Delta t \le \min(\Delta x/c_{\max},\, \Delta x^2/D_{\max})$.
+\end{itemize}
+
+\subsection{Identification and inference}
+\begin{itemize}
+  \item \textbf{Inverse problems:} recover $\Threshold(x)$ and gate parameters from event locations/timings (hazard tomography).
+  \item \textbf{Well-posedness:} identifiability under excitation conditions (persistent transport; coverage of $u$ near threshold).
+  \item \textbf{Regularization:} TV/graph priors for $\Threshold$; Bayesian/posterior consistency for $\Survival,\Release$ families.
+\end{itemize}
+
+\subsection{Minimal theorem set (paper and follow-ups)}
+\begin{enumerate}
+  \item Existence/uniqueness for diffusive/mixed closure with bounded data; positivity of $m,\FoldTime$.
+  \item Energy well-posedness for wave-limit with $0\le c^2\le c_0^2$, $\gamma\ge 0$.
+  \item Hybrid consistency: jump law yields exact budget closure across events; anti-Zeno dwell-time bound.
+  \item Coherence reduction: conditions under which telegraph reduction approximates the full closure to $O(\epsilon)$.
+  \item Scheme convergence: event-aware FV/IMEX scheme converges to the weak hybrid solution; budgets close to tolerance.
+\end{enumerate}
+
+\subsection{Deliverables (this paper vs.\ later modules)}
+\textbf{In this paper:} formal axioms; precise problem statements; definitions of $\Survival,\Release,H$ classes; well-posedness theorems for simplest closures; energy/positivity estimates; coherence window definition; budget/jump laws; numerical blueprint (no runs).\\
+\textbf{Later modules:} full proofs for broader closures; calibrated examples (Quaoar, double-slit surrogates, materials); inference demos; notebooks and event-aware solvers.
+
+\subsection{Red lines}
+No hidden nonlocal terms; no claims of gauge/GR equivalence; no entanglement account yet. All theorems must state assumptions on $J,\Survival,\Release,\Threshold$ explicitly and prove budget closure and positivity.
+
+
+% ===========================================================
+% 11
+
+\section{Discussion and limitations}
+
+\subsection{What the framework buys us}
+\begin{itemize}
+  \item \textbf{Unification-by-mechanics:} one substrate ($\SRF$) with two modes (persistence vs.\ collapse) accounts for waves, stick--slip, and avalanches under a single bookkeeping law for $m=\FoldDensity\,\FoldTime$.
+  \item \textbf{Locality with events:} ``measurement'' and other discontinuities are modeled as thresholded, localized resets, not axioms standing outside dynamics.
+  \item \textbf{Transport-agnostic:} the same invariance law supports both coherent (wave-limit) and noncoherent (diffusive/mixed) closures.
+\end{itemize}
+
+\subsection{Core assumptions (load-bearing beams)}
+\begin{itemize}
+  \item \textbf{Conserved product between events:} $m=\FoldDensity\,\FoldTime$ obeys a continuity law on any fixed control volume between events.
+  \item \textbf{Threshold logic:} a dimensionful $\Threshold(x)$ exists, and hazard $H(\FoldTime/\Threshold,\FoldDensity)$ detects when collapse should occur.
+  \item \textbf{Reset sufficiency:} after a release, setting $\FoldTime\to 0$ (plus an event flux) erases local dependency on deep history (``locality after reset'').
+  \item \textbf{Coherence windows:} there are regimes where a gated wave closure is accurate up to controlled error.
+\end{itemize}
+
+\subsection{Known gaps (deliberately deferred)}
+\begin{itemize}
+  \item \textbf{Gauge/QFT structure:} no account (yet) of internal symmetries, spin, or renormalization; our ``wave'' is mechanical/structural, not a quantized field.
+  \item \textbf{Entanglement/nonlocality:} multiparty correlations and Bell-inequality phenomena are not derived here.
+  \item \textbf{Geometry coupling:} GR-like behavior is sketched via variable speeds/thresholds; we do not reproduce Einstein's equations.
+  \item \textbf{Energetics mapping:} $m$ is a structural density, not identified with energy or probability density universally; correspondences are readings, not identities.
+  \item \textbf{PSP$\to\SRF$ genesis:} existence and stability of the genesis map are outlined, not proved.
+\end{itemize}
+
+\subsection{Failure modes (how this could be wrong)}
+\begin{itemize}
+  \item \textbf{Budget violations:} reproducible experiments showing $\int_V m$ changes between events without boundary/event terms.
+  \item \textbf{Trigger mismatch:} releases systematically occur far from near-threshold loci predicted by $u=\FoldTime/\Threshold$.
+  \item \textbf{Reset memory:} post-event dynamics demonstrably depend on pre-event microhistory despite $\FoldTime\to 0$.
+  \item \textbf{No coherence windows:} phenomena assumed coherent cannot be brought into a wave-limit closure even approximately.
+\end{itemize}
+
+\subsection{Sensitivity and robustness}
+\begin{itemize}
+  \item \textbf{To $\Threshold(x)$:} nucleation-site predictions are sensitive to threshold maps; small errors in $\Threshold$ can move events (hazard tomography is required in practice).
+  \item \textbf{To gate shapes:} qualitative behavior is robust to smooth $\Survival(u)\in[0,1]$ gates, but quantitative rates depend on parameterizations of $\Survival$ and $\Release$.
+  \item \textbf{Boundaries and driving:} open systems need explicit source/flux accounting; otherwise the invariance audit can be misread as a violation.
+\end{itemize}
+
+\subsection{On the ``wave as simplest fold'' claim}
+This is a \emph{conjectural organizing principle}, not an axiom. Where coherence holds, the telegraph/wave closure is efficient and aligns with interference; where it fails, the diffusive or mixed closure should be used. The duality (persistence vs.\ collapse) remains the substrate-level statement regardless.
+
+\subsection{Scope management (what we do not do here)}
+No simulations in-paper; stability checks and numerics are outlined as a program. No fits to data; applications are conceptual audits (Section~\ref{sec:applications} if labeled). No ontological commitments beyond $\SRF$ mechanics; terms like ``particle,'' ``observer,'' or ``probability'' are regime-dependent readings, not primitives.
+
+\subsection{Practical next steps (to shrink the risk)}
+\begin{itemize}
+  \item \textbf{Math:} prove existence/uniqueness and positivity for one diffusive closure; energy well-posedness for the wave-limit with gated $c^2$.
+  \item \textbf{Diagnostics:} standardize budget audits and hazard maps for tabletop surrogates (e.g., diffusive channel with controlled $\kappa$-pattern).
+  \item \textbf{Discriminators:} design coherence-window knobs that separate $\SRF$ predictions from look-alikes without invoking which-path semantics.
+\end{itemize}
+
+\subsection{Tone and claims}
+We present a \emph{theory-first framework}: conservative where it must be (locality, budget, resets), agnostic where the world may differ (closure choices, geometry coupling), and explicit about what would falsify it. The intended value is organizational: a small set of mechanisms that make disparate domains legible, pending proof and calibration in later modules.
+
+
+% ===========================================================
+% 12
+
+\section{Outlook}
+
+\subsection{Near-term priorities}
+\begin{itemize}
+  \item \textbf{Tighten the core:} finalize axioms, the invariance statement, and the hazard/reset formalism; keep ``wave as the simplest fold'' as a clearly marked organizing claim, not an axiom.
+  \item \textbf{Minimal theorem set:} complete proofs for one diffusive/mixed closure (existence/uniqueness, positivity) and an energy estimate for the gated telegraph system.
+  \item \textbf{Reference examples (paper-ready, no sims):} polish the conceptual audits (Quaoar loop, double-slit terminus, capillary pin--slip, caustics/focusing) with explicit $J$, $\Threshold(x)$, $\Survival$, $\Release$, and budget statements.
+  \item \textbf{Notation and glossary:} lock symbols and definitions so later modules do not churn terminology.
+\end{itemize}
+
+\subsection{Medium-term program}
+\begin{itemize}
+  \item \textbf{Hybrid well-posedness:} extend between-events results to include the event jump law, anti-Zeno dwell bounds, and budget closure across events.
+  \item \textbf{Coherence-window theory:} state sufficient conditions for when the telegraph reduction is accurate to $O(\epsilon)$; bound error via dispersion/phase spread.
+  \item \textbf{Event-aware numerics:} implement conservative finite-volume + IMEX solvers with hazard detection and audit logs (integral of $m=\FoldDensity\FoldTime$, event ledgers); verify convergence on synthetic cases.
+  \item \textbf{Hazard tomography:} formulate inverse problems for $\Threshold(x)$ and gate parameters from sparse event data.
+  \item \textbf{Discriminators:} design tabletop surrogate protocols that separate $\SRF$ predictions from look-alikes (coherence-window knobs, barrier thickening, controlled disorder).
+\end{itemize}
+
+\subsection{Longer-term avenues}
+\begin{itemize}
+  \item \textbf{Geometry coupling:} explore how variable $c(x)$ or $\Threshold(x)$ tied to stress/curvature mimics GR-like causality while retaining locality and budget closure.
+  \item \textbf{Internal structure:} add state components for symmetry/gauge-like behavior; investigate whether a variational/Lagrangian wrapper exists that recovers the same invariance and jump rules (Noether-type connections).
+  \item \textbf{Quantum interface:} carefully scope multipartite scenarios and Bell-type tests in an $\SRF$ language (or delineate limits if orthogonal).
+\end{itemize}
+
+\subsection{Decision gates and risk control}
+\begin{itemize}
+  \item \textbf{Gate A (math):} if positivity or budget closure fails for the simplest closure under sane assumptions, revise $\Survival,\Release,H$ classes or narrow claims.
+  \item \textbf{Gate B (numerics):} if event-aware schemes cannot maintain audits to tolerance, treat this as a red flag for the hybrid formulation or the reset rule.
+  \item \textbf{Gate C (surrogates):} if coherence-window tuning does not modulate patterns as predicted in benign setups, downgrade the ``wave as simplest fold'' claim.
+\end{itemize}
+
+\subsection{Tooling and data hygiene}
+\begin{itemize}
+  \item \textbf{Repro stack:} one repository with (i) axioms/spec, (ii) theorem notebooks, (iii) solver kernels, (iv) audit visualizers.
+  \item \textbf{Contracts:} every notebook enforces three invariants by test: nonnegativity of $m$, budget closure between events, and locality after reset ($\FoldTime\to 0$).
+\end{itemize}
+
+\subsection{Communication plan}
+\begin{itemize}
+  \item \textbf{This paper (Module I):} theory-first, minimal proofs, conceptual audits only.
+  \item \textbf{Module II (math):} extended well-posedness, coherence window, hybrid existence, and scheme convergence.
+  \item \textbf{Module III (applications):} calibrated surrogates and discriminators; modest scope, falsifiable predictions.
+  \item \textbf{Open sourcing:} arXiv + GitHub with a living glossary; periodic DOI snapshots.
+\end{itemize}
+
+\subsection{What would count as strong positive news}
+\begin{itemize}
+  \item A clean telegraph-reduction theorem with explicit constants.
+  \item A solver that passes budget audits across thousands of events.
+  \item A surrogate experiment where moving a coherence knob shifts terminus release statistics as the hazard map predicts.
+\end{itemize}
+
+\subsection{Closing note}
+The value of $\SRF$ is organizational: a small set of local rules that make diverse phenomena legible through one ledger $m=\FoldDensity\,\FoldTime$, plus a disciplined account of when and where structure localizes. Keeping the bold parts (wave as the simplest fold; PSP-to-$\SRF$ genesis) as clearly testable rather than axiomatic preserves upside while containing downside. Follow-on papers should reduce the theory's degrees of freedom, not expand them.
+
+
+$ ============================================================
+% 13
+
+\section{Closing reflections}
+
+We set out to reduce a wide zoo of phenomena to a small set of structural moves on one substrate. The proposal is modest in ingredients---$\FoldDensity$ (fold density), $\FoldTime$ (Fold-Time), a threshold $\Threshold(x)$, a transport $J$, and two gates $\Survival,\Release$---but ambitious in scope. Between events, the invariant $m=\FoldDensity\,\FoldTime$ provides a single ledger; at events, hazard and reset localize what transport has prepared. That is the whole rhythm.
+
+If the framework is right in spirit, it should be recognizable wherever coherence shows up: waves as the simplest fold; stick--slip as punctuated transport; interference as patterned accumulation with terminus releases. If it is wrong, it will fail in ways we have made legible: budget audits that do not close, releases far from near-threshold loci, or resets that do not erase local history.
+
+We have kept the bold parts where they belong: as \emph{organizing claims} (not axioms) that are testable in bounded contexts. ``Wave as simplest fold'' is an interpretive lens that earns its place only if coherence-window knobs reliably move patterns as predicted. The PSP$\to\SRF$ genesis is a story about why these closures exist; it remains a program until the existence and stability results are proved.
+
+What we are certain of is narrower than what we hope: locality of the bookkeeping; positivity and continuity of $m$ between events; the usefulness of hazard maps for predicting where structure will localize. What we are uncertain about is explicit: gauge structure, GR-level geometry, and entanglement sit outside this paper's claims.
+
+Two virtues seem worth keeping even if parts of the picture change:
+\begin{itemize}
+  \item \textbf{Discipline about budgets:} whatever the true microphysics, being able to close an integral ledger between events is a powerful filter on stories.
+  \item \textbf{Mode duality:} persistence and collapse are not competing ontologies but two regimes of one substrate, with thresholds mediating the switch.
+\end{itemize}
+
+This draft is versioned by design (April 2025 original; August 2025 revision). The theory should become \emph{simpler} as it matures. If future modules add parameters faster than they remove them, we will have learned something important about the limits of the fold lens.
+
+The invitation is practical: prove or break the minimal theorems; build event-aware solvers that pass audits; run small, falsifiable surrogates where coherence can be dialed. If the framework survives those trials, it will have earned a place. If it does not, the failures will still be information compressed into a clean ledger---useful in their own right.
+
+We close with the same stance we opened with: this is a \emph{theory-first} scaffold to make disparate domains legible with as few moving parts as possible. The paper plants the flag; the next modules should move it only when the ledger demands.
+
+% ==========================================================
+% Acknowledgements
+
+\section*{Acknowledgments}
+This manuscript was prepared with assistance from an AI system (``computational assistant'') used for ideation, drafting, notation standardization, and consistency checks. The assistant proposed candidate mathematical formulations (e.g., invariance statements, hybrid event rules, and wave-limit closures) and helped edit the text. All modeling choices, acceptance/rejection of proposals, and final wording were made by the human author, who takes full responsibility for the content. The assistant is not an author and has no claims of authorship or responsibility.
+
+
+
+% ===========================================================
+% bibliography
+
+\begin{thebibliography}{99}
+
+\begin{thebibliography}{99}
+\bibitem{Sowden2025Quaoar}
+S.~Sowden, \emph{QUAOAR.01 — Testing Recursive Boundaries} (2025).
+Available at: \url{https://primefoldtheory.org/paper/quaoar_fold_complete_with_figures.pdf}.
+\end{thebibliography}
+
+
+\bibitem{Einstein1901Capillarity}
+A.~Einstein, ``Folgerungen aus den Capillaritätserscheinungen,'' \emph{Annalen der Physik} \textbf{4} (1901), 513--523.
+
+\bibitem{Schrodinger1926}
+E.~Schr\"odinger, ``Quantisierung als Eigenwertproblem,'' \emph{Annalen der Physik} \textbf{79} (1926), 361--376.
+
+\bibitem{Einstein1916GR}
+A.~Einstein, ``Die Grundlage der allgemeinen Relativit\"atstheorie,'' \emph{Annalen der Physik} \textbf{49} (1916), 769--822.
+
+\bibitem{TelegraphClassic}
+O.~Heaviside, \emph{Electrical Papers}, Vol.~1, Macmillan (1892). (Telegrapher’s equation background.)
+
+\bibitem{LeVeque2002}
+R.~J. LeVeque, \emph{Finite Volume Methods for Hyperbolic Problems}, Cambridge Univ. Press (2002).
+
+\bibitem{Cox1972}
+D.~R. Cox, ``Regression Models and Life-Tables,'' \emph{Journal of the Royal Statistical Society B} \textbf{34} (1972), 187--220. (Hazard/survival background.)
+
+\end{thebibliography}
+
+% ===========================================================
+\end{document}
