@@ -49,6 +49,10 @@ License
 © 2025 Sean Sowden. All rights reserved until formal release.
 If a LICENSE file is present, its terms govern.
 
+Contact
+
+Email: Sean@PrimeFoldTheory.org
+Site: https://primefoldtheory.org
 
 ## Build Locally (LaTeX)
 
