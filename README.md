@@ -113,8 +113,3 @@ If you are an arXiv author in this category and believe this work is of interest
 **Email:** [Sean@PrimeFoldTheory.org](mailto:Sean@PrimeFoldTheory.org)
 **Project Site:** [https://primefoldtheory.org](https://primefoldtheory.org)
 
-```
-
-If your Module I files live somewhere else, just tweak those two paths near the top. Want me to add a tiny “How to contribute” or a `CITATION.cff` later?
-::contentReference[oaicite:0]{index=0}
-```
