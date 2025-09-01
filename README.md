@@ -35,8 +35,8 @@ This repository hosts the versioned papers, notes, and artifacts for PFT.
 ## Module II — Recursive Boundaries in EEG Systems
 
 ### 📄 Module 2.1: Cross-System Simulation of Fold-Time Invariance
-- [PDF](paper/module2/module2.1/mod2p1.pdf)  
-- [LaTeX source](paper/module2/module2.1/mod2p1.tex)  
+- [PDF](paper/module2.1/mod2p1.pdf)  
+- [LaTeX source](paper/module2.1/mod2p1.tex)  
 - **Status**: Complete, arXiv-ready. Simulates SRF vs quake toy to test invariance.
 
 ### ⏳ Module 2.2: EEG Application
@@ -61,10 +61,24 @@ The earliest public record of the original field ansatz appears in the **Quaoar 
 
 ---
 
-License
+## 📜 License & Copyright
 
-© 2025 Sean Sowden. All rights reserved until formal release.
-If a LICENSE file is present, its terms govern.
+© 2025 Sean Sowden. All rights reserved.
+
+This work is licensed under the 
+[Creative Commons Attribution–NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+You are free to share and adapt this material for non-commercial purposes, 
+provided that proper credit is given to the author and any modifications are 
+clearly indicated. Commercial use of this work is not permitted without prior 
+written permission.
+
+Scientific ideas, simulation designs, and theoretical interpretations remain 
+the intellectual work of the author. AI assistance (OpenAI GPT-5) was used 
+only for LaTeX formatting, editing support, and presentation polish.
+
+
+---
 
 Contact
 
