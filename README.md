@@ -1,89 +1,65 @@
-# Prime Fold Theory
+# Prime Fold Theory — Research Modules
 
-**Prime Fold Theory (PFT)** is a theory-first framework built on a **Structural Recursive Field (SRF)** with two operational modes:
-- **Persistence** — transport/coherence of structure
-- **Collapse** — thresholded release events
+**Author:** Sean Sowden  
+**Website:** [primefoldtheory.org](https://primefoldtheory.org)  
 
-The framework tracks an invariance ledger **m = Φ τ̄** (fold density × truncated Fold-Time) between threshold events.  
-This repository hosts the versioned papers, notes, and artifacts for PFT.
+Prime Fold Theory (PFT) reinterprets structural dynamics through three primitives:  
+- **Fold Density (Φ)** — local structural loading  
+- **Fold-Time (τ̄)** — tension accumulator with threshold reset  
+- **Threshold (κ)** — local collapse bound  
 
-
----
-
-## Module I (Aug 2025 revision) — What’s inside
-- 📄 **Module I — Framework (PDF):** [`paper/module1/Mod1v2.pdf`](paper/module1/Mod1v2.pdf)  
-- 🧪 **LaTeX source:** [`paper/module1/Mod1v2.tex`](paper/module1/Mod1v2.tex)  
-- 🪐 **Original equation (Apr 2025) — Quaoar module:** [`quaoar_fold_complete_with_figures.pdf`](quaoar_fold_complete_with_figures.pdf)
-
-
-- Core quantities: **Fold Density (Φ), Fold-Time (τ̄), Threshold (κ)**
-- **Duality as a structural mechanism** (persistence ↔ collapse)
-- **Law of Structural Invariance**: conservation of *m* between events with flux accounting
-- **PSP → SRF** genesis; **wave as the simplest fold** (organizing claim, not an axiom)
-- Candidate **field equations** for SRF
-- **Conceptual applications only** (Quaoar ring stability, double-slit, capillarity)
-
-**Status:** Theory-first paper. No experiments or sims included here; those land in later modules.
+The **Law of Structural Invariance** asserts conservation of the product Φτ̄ between events, 
+with resets at threshold crossings. This repo hosts the modular paper series that formalizes, 
+tests, and applies this framework.
 
 ---
 
-## Module II — Recursive Boundaries in EEG Systems
+## 📖 Modules
 
-### 📄 Module 2.1: Cross-System Simulation of Fold-Time Invariance
-- [PDF](paper/module2.1/mod2p1.pdf)  
-- [LaTeX source](paper/module2.1/mod2p1.tex)  
-- **Status**: Complete, arXiv-ready. Simulates SRF vs quake toy to test invariance.
-
-### ⏳ Module 2.2: EEG Application
-- Placeholder (in preparation).  
-- Will test invariance using human EEG recordings.
-
-### ⏳ Module 2.3: Extensions
-- Placeholder (planned).  
-- Expands EEG analysis and recursive boundaries to broader biological data.
+### [Module 1 — Core Theory](./Module1/Module1.pdf)
+Defines the Fold primitives (Φ, τ̄, κ), states the invariance law, introduces the Structural Recursive Field (SRF), and frames the math program.  
+*Type: Theory-first, conceptual groundwork.*
 
 ---
 
-## Provenance of the Original Ansatz
-
-The earliest public record of the original field ansatz appears in the **Quaoar module (Apr 2025)**.  
-**Module I (Aug 2025)** uses a **gated/truncated** revision.
-
-**Cite in text:** “See the Quaoar module for the original ansatz; this paper uses the August 2025 revised, gated form.”
-
-- Original (Apr 2025): [`quaoar_fold_complete_with_figures.pdf`](quaoar_fold_complete_with_figures.pdf)  
-- Current framework: [`paper/module1/Mod1v2.pdf`](paper/module1/Mod1v2.pdf)
+### [Module 2.1 — Cross-System Simulation](./Module2.1/Module2.1.pdf)
+Stress-tests fold-time invariance across two toy systems (SRF lattice, quake toy), multiple dimensions, and parameter sweeps.  
+Results: normalized τ̄ cycles are invariant across systems, dimensions, and conditions.  
+*Type: Simulation study.*
 
 ---
 
-## 📜 License & Copyright
+### [Module 2.2 — Mathematical Well-Posedness](./Module2.2/Module2.2.pdf)
+Proves the “Big Five” theorems:  
+- Positivity  
+- Existence & Uniqueness  
+- Budget Closure  
+- Reset Locality  
+- Anti-Zeno  
 
-© 2025 Sean Sowden. All rights reserved.
-
-This work is licensed under the 
-[Creative Commons Attribution–NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
-
-You are free to share and adapt this material for non-commercial purposes, 
-provided that proper credit is given to the author and any modifications are 
-clearly indicated. Commercial use of this work is not permitted without prior 
-written permission.
-
-Scientific ideas, simulation designs, and theoretical interpretations remain 
-the intellectual work of the author. AI assistance (OpenAI GPT-5) was used 
-only for LaTeX formatting, editing support, and presentation polish.
-
+Includes a numerical blueprint and a minimal reference solver with audit checks.  
+Artifacts:  
+- `fold_solver_1d.py` — reference solver  
+- `demo_plots.py` — plotting script  
+- `README_mod2p2_scripts.md` — usage notes  
+*Type: Mathematical foundation.*
 
 ---
 
-Contact
+### [Module 5 — Quaoar: First Observable Fold-Shell Anomaly](./Module5/Module5.pdf)
+Applies Fold Gravity to Quaoar’s ring system beyond the Roche limit.  
+Result: ring location matches predicted fold-shell boundary; extends to Haumea and Chariklo.  
+*Type: Empirical application.*
 
-Email: Sean@PrimeFoldTheory.org
-Site: https://primefoldtheory.org
+---
 
-## Build Locally (LaTeX)
+## 🔗 Resources
+- Website: [primefoldtheory.org](https://primefoldtheory.org)  
+- Contact: sean@primefoldtheory.org  
 
-```bash
-cd paper/module1
-latexmk -pdf Mod1v2.tex
-# or: pdflatex Mod1v2.tex && pdflatex Mod1v2.tex
-okular Mod1v2.pdf &
+---
+
+## 📌 License
+© 2025 Sean Sowden. Licensed under **CC BY–NC 4.0**.  
+You are free to share and adapt the work with attribution, for non-commercial purposes.  
+See [LICENSE](https://creativecommons.org/licenses/by-nc/4.0/) for details.
