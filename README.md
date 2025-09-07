@@ -7,19 +7,14 @@
 The framework tracks an invariance ledger **m = Φ τ̄** (fold density × truncated Fold-Time) between threshold events.  
 This repository hosts the versioned papers, notes, and artifacts for PFT.
 
----
-
-## Quick Links
-
-- 📄 **Module I — Framework (PDF):** [`paper/module1/Mod1v2.pdf`](paper/module1/Mod1v2.pdf)  
-- 🧪 **LaTeX source:** [`paper/module1/Mod1v2.tex`](paper/module1/Mod1v2.tex)  
-- 🪐 **Original equation (Apr 2025) — Quaoar module:** [`quaoar_fold_complete_with_figures.pdf`](quaoar_fold_complete_with_figures.pdf)
-
-*(Relative links work immediately on GitHub. Public site links will match once Pages rebuilds.)*
 
 ---
 
 ## Module I (Aug 2025 revision) — What’s inside
+- 📄 **Module I — Framework (PDF):** [`paper/module1/Mod1v2.pdf`](paper/module1/Mod1v2.pdf)  
+- 🧪 **LaTeX source:** [`paper/module1/Mod1v2.tex`](paper/module1/Mod1v2.tex)  
+- 🪐 **Original equation (Apr 2025) — Quaoar module:** [`quaoar_fold_complete_with_figures.pdf`](quaoar_fold_complete_with_figures.pdf)
+
 
 - Core quantities: **Fold Density (Φ), Fold-Time (τ̄), Threshold (κ)**
 - **Duality as a structural mechanism** (persistence ↔ collapse)
