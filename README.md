@@ -16,7 +16,7 @@ tests, and applies this framework.
 
 ## 📖 Modules
 
-### [Module 1 — Core Theory](./paper/module1/mod1v2.pdf)
+### [Module 1 — Core Theory](./paper/module1/Mod1v2.pdf)
 Defines the Fold primitives (Φ, τ̄, κ), states the invariance law, introduces the Structural Recursive Field (SRF), and frames the math program.  
 *Type: Theory-first, conceptual groundwork.*
 
