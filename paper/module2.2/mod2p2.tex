@@ -7,6 +7,9 @@
 \usepackage{enumitem} % clean lists
 \usepackage{geometry} % page setup
 \usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % omit if compiling with lualatex/xelatex
+
 
 \geometry{margin=1in}
 
@@ -20,7 +23,7 @@
 \title{Module 2.2: Mathematical Well-Posedness of Fold Dynamics}
 \author{Sean Sowden \\ Independent Researcher}
 \date{September 2025 \\[1ex]
-© 2025 Sean Sowden, Licensed under CC BY--NC 4.0.}
+© 2025 Sean Sowden. Licensed under CC BY--NC 4.0.}
 
 
 
@@ -30,8 +33,9 @@
 This module establishes the mathematical backbone of Prime Fold Theory by 
 proving a minimal theorem set for fold-time dynamics. We show that positivity,
 existence/uniqueness, budget closure, reset locality, and the anti-Zeno property 
-hold under admissible closures. These results ensure that the invariance law 
-$m = \Phi \bar{\tau}$ is a legitimate conservation principle, not a numerical artifact.
+hold under admissible closures. % In the abstract paragraph:
+These results ensure that the invariance law $m = \Phi\, \bar{\tau}$ is a legitimate conservation principle, not a numerical artifact.
+
 \end{abstract}
 
 \tableofcontents
@@ -116,7 +120,7 @@ At an event on support $E$:
 
 \subsection{Continuity Law for $m$}
 
-\begin{lemma}[Continuity of $m$]
+\begin{lemma}[Continuity of $m$]\label{lem:continuity}
 Between events (when no reset occurs), the structural mass--like density
 \[
 m(x,t) = \Phi(x,t)\,\bar{\tau}(x,t)
@@ -297,7 +301,7 @@ introducing negative density.
 
 \begin{proof}
 \textbf{Between events.}  
-By Lemma~2.1 (Continuity of $m$), 
+By Lemma~\ref (Continuity of $m$), 
 $\partial_t m + \nabla \cdot J = s$ holds. 
 Integrating over $V$ and applying the divergence theorem yields
 \[
@@ -410,26 +414,23 @@ examples.
 
 \begin{table}[h!]
 \centering
-\renewcommand{\arraystretch}{1.3}
-\begin{tabularx}{\textwidth}{|l|X|X|l|}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|l|l|X|l|}
 \hline
-\textbf{Law} & \textbf{Conserved density} & \textbf{Continuity form} & \textbf{Positivity requirement} \\
+\textbf{Law} & \textbf{Conserved density} & \textbf{Continuity form} & \textbf{Positivity} \\
 \hline
-Mass (fluids) & $\rho(x,t)$ & $\partial_t \rho + \nabla\cdot(\rho v) = 0$ & $\rho \geq 0$ \\ 
+Mass (fluids) & $\rho(x,t)$ & $\partial_t \rho + \nabla\!\cdot(\rho v)=0$ & $\rho \ge 0$ \\
 \hline
-Probability (QM) & $|\psi(x,t)|^2$ & $\partial_t |\psi|^2 + \nabla \cdot J = 0$ & $|\psi|^2 \geq 0$ \\ 
+Probability (QM) & $|\psi(x,t)|^2$ & $\partial_t |\psi|^2 + \nabla\!\cdot J=0$ & $|\psi|^2 \ge 0$ \\
 \hline
-Entropy (thermo) & $s(x,t)$ & $\partial_t s + \nabla\cdot J_s \geq 0$ & $s \geq 0$ \\ 
+Entropy (thermo) & $s(x,t)$ & $\partial_t s + \nabla\!\cdot J_s \ge 0$ & $s \ge 0$ \\
 \hline
-Energy (mechanics) & $e(x,t)$ & $\partial_t e + \nabla\cdot J_e = 0$ & $e \geq 0$ (kinetic, potentials) \\ 
+Energy (mechanics) & $e(x,t)$ & $\partial_t e + \nabla\!\cdot J_e=0$ & $e \ge 0$ \\
 \hline
-Fold invariance (PFT) & $m(x,t)=\Phi(x,t)\,\bar{\tau}(x,t)$ & $\partial_t m + \nabla \cdot J = 0$ (between events) & $\Phi \geq 0, \ \bar{\tau} \geq 0$ \\ 
+Fold invariance (PFT) & $m=\Phi\,\bar{\tau}$ & $\partial_t m + \nabla\!\cdot J=0$ (between events) & $\Phi\ge 0,\ \bar{\tau}\ge 0$ \\
 \hline
 \end{tabularx}
-\caption{Comparison of conservation laws. Each requires non-negativity 
-of the conserved density for interpretability. The Fold law joins this 
-family by treating $m=\Phi\bar{\tau}$ as a structurally conserved 
-quantity, closed by reset operators at events.}
+\caption{Each law requires a non-negative density. Fold joins this family with $m=\Phi\bar{\tau}$, closed by event resets.}
 \end{table}
 
 
@@ -521,6 +522,24 @@ conservation laws, and that its event-reset structure can be proved consistent,
 stable, and simulation-ready. Subsequent modules will carry this scaffold 
 into applications and falsifiable tests.
 
+\subsection*{Implications for Prime Fold Theory}
+
+The mathematical results of this module establish that the Fold invariance law is not only conceptually well-motivated but also rigorously well-posed. 
+The ``Big Five'' theorems --- positivity, existence/uniqueness, budget closure, reset locality, and anti-Zeno --- guarantee that the Fold dynamics behave as a legitimate conservation principle under admissible closures. 
+
+This strengthens the foundations laid in Module~1, where Fold-Time was introduced as a structural primitive, and provides the mathematical armor behind the simulation results of Module~2.1. 
+In particular, the proof that $m = \Phi \bar{\tau}$ remains non-negative and bounded through cycles confirms that Fold dynamics can stand alongside mass, probability, and energy as a conservation law. 
+
+For concreteness, Appendix~B provides simple examples (quake toy stress dynamics and a uniform event redistribution) that demonstrate how the abstract theorems of this module manifest in practice and connect directly to the simulations of Module~2.1.
+
+Thus, Module~2.2 closes the logical gap between the conceptual law of invariance and the empirical demonstrations, preparing the ground for future modules that extend these dynamics to cosmological and neural domains.
+
+\section*{Acknowledgements}
+
+The author thanks the open-source mathematics and physics communities for foundational resources on PDE theory and numerical methods.  
+Special acknowledgement is due to modern AI research assistants (notably ChatGPT, Claude, and Grok) for their role in refining proofs and stress-testing arguments during the preparation of this manuscript.  
+All errors remain the responsibility of the author.
+
 
 \appendix
 \section{Reference Solver (1-D) }\label{app:solver}
@@ -562,8 +581,103 @@ for n in range(Nsteps):
 a running ledger of reset drops; (iii) anti-Zeno via a timestep bound tied to
 $\kappa/(\eta \Phi_{\max})$. Full scripts and plots are provided in the repository.
 
+%\appendix
+\section{Exemplars of Admissible Closures}
+
+For concreteness, we list three canonical closures. 
+They are not exhaustive, but span the dominant PDE families 
+encountered in continuum physics:
+
+\begin{itemize}
+  \item \textbf{Diffusive (parabolic).} 
+  $J = -D \nabla m$, $D \ge 0$. 
+  Dissipative smoothing with maximum principle.
+
+  \item \textbf{Advective (transport).} 
+  $J = v m$. 
+  Pure translation along characteristics, preserves sign.
+
+  \item \textbf{Wave-like (hyperbolic with damping).} 
+  $\partial_t m + \nabla \!\cdot P = 0,\quad 
+   \partial_t P + c^2 \nabla m = -\gamma P$, $\gamma \ge 0$. 
+  Finite-speed propagation, energy-damped.
+\end{itemize}
+
+Each of these exemplars preserves positivity, admits existence and uniqueness, 
+and respects budget closure under the Fold invariance law.
+
+
+%\appendix
+\section{Illustrative Examples}
+
+This appendix provides two simple demonstrations of the theorems in action, linking the abstract results of Module~2.2 to the toy simulations of Module~2.1.
+
+\subsection{Quake Toy and Positivity Preservation}
+In the spring--block quake toy, the fold-time variable $\bar{\tau}$ is identified with the accumulated stress:
+\[
+\partial_t \bar{\tau} = k (Vt - x) - F_{\mathrm{fric}}(\dot{x}),
+\]
+with $k,V>0$ and $F_{\mathrm{fric}}(\dot{x})\ge 0$.  
+Since the forcing term is non-negative and the dissipation cannot push $\bar{\tau}$ below zero, the dynamics directly instantiate Theorem~3.1: $\bar{\tau}(t)\ge 0$ for all $t$.  
+Simulations in Module~2.1 confirm this to machine precision across all parameter sweeps, providing a concrete check of positivity preservation.
+
+\subsection{A Simple Event Redistribution}
+At collapse ($\bar{\tau}\ge\kappa$), the reset rule sets $\bar{\tau}\to 0$ on the event set $E$.  
+One admissible redistribution operator is a uniform share of $\Phi$ among the $2d$ nearest neighbors in a $d$-dimensional lattice:
+\[
+\Phi'(x_i) =
+\begin{cases}
+0, & x_i \in E, \\[6pt]
+\Phi(x_i) + \tfrac{1}{2d} \!\!\!\!\! \sum\limits_{x_j\in N(i)\cap E} \!\!\!\!\! \Phi(x_j), & x_i \notin E,
+\end{cases}
+\]
+where $N(i)$ denotes the neighboring sites of $x_i$.  
+This operator preserves non-negativity by construction, and ensures that the total budget of $m=\Phi \bar{\tau}$ is unchanged except for the reset term, exactly as required in Theorem~3.3.  
+
+%\subsection*{B.3 Illustration}
+%Figure~\ref{fig:quake_example} shows a one-dimensional simulation with three lattice sites, demonstrating:  
+%(1) $\bar{\tau}$ grows to $\kappa$ and resets to zero;  
+%(2) $\Phi$ redistributes uniformly;  
+%(3) $m=\Phi \bar{\tau}$ remains non-negative throughout.  
+
+%\begin{figure}[h]
+ %   \centering
+ %   \includegraphics[width=0.75\linewidth]{figs/quake_example.pdf}
+ %   \caption{Illustration of positivity preservation and admissible redistribution in a three-site lattice quake toy.}
+ %   \label{fig:quake_example}
+%\end{figure}
+
+These examples show how the abstract theorems of Module~2.2 are concretely realized in simple fold dynamics, and how they connect to the simulations of Module~2.1.
+
 
 \bibliographystyle{plain}
-\bibliography{references}
+\begin{thebibliography}{9}
+
+\bibitem{EvansPDE}
+L. C. Evans, \textit{Partial Differential Equations}, 2nd ed., American Mathematical Society, 2010.  
+(Standard reference for maximum principles, existence, and uniqueness results.)
+
+\bibitem{LeVeque}
+R. J. LeVeque, \textit{Finite Volume Methods for Hyperbolic Problems}, Cambridge University Press, 2002.  
+(Classic source for finite-volume and conservation law numerics.)
+
+\bibitem{Tao}
+T. Tao, \textit{Nonlinear Dispersive Equations: Local and Global Analysis}, CBMS Regional Conference Series in Mathematics, 2006.  
+(General reference for wave-like PDE closures and energy methods.)
+
+\bibitem{Callen}
+H. B. Callen, \textit{Thermodynamics and an Introduction to Thermostatistics}, 2nd ed., Wiley, 1985.  
+(Background on entropy, energy, and conservation laws for comparison with Fold invariance.)
+
+\bibitem{SowdenMod1}
+S. Sowden, ``Module 1: Foundations of Fold-Time Invariance,'' Prime Fold Theory Project, 2025.  
+(Introduction of primitives and invariance hypothesis.)
+
+\bibitem{SowdenMod2p1}
+S. Sowden, ``Module 2.1: Cross-System Simulation of Fold-Time Invariance,'' Prime Fold Theory Project, 2025.  
+(Numerical simulations establishing invariance across wave and frictional systems.)
+
+\end{thebibliography}
+
 
 \end{document}
