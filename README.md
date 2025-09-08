@@ -16,20 +16,20 @@ tests, and applies this framework.
 
 ## 📖 Modules
 
-### [Module 1 — Core Theory](./module1/mod1v2.pdf)
+### [Module 1 — Core Theory](./paper/module1/mod1v2.pdf)
 Defines the Fold primitives (Φ, τ̄, κ), states the invariance law, introduces the Structural Recursive Field (SRF), and frames the math program.  
 *Type: Theory-first, conceptual groundwork.*
 
 ---
 
-### [Module 2.1 — Cross-System Simulation](./module2.1/mod2p1.pdf)
+### [Module 2.1 — Cross-System Simulation](./paper/module2.1/mod2p1.pdf)
 Stress-tests fold-time invariance across two toy systems (SRF lattice, quake toy), multiple dimensions, and parameter sweeps.  
 Results: normalized τ̄ cycles are invariant across systems, dimensions, and conditions.  
 *Type: Simulation study.*
 
 ---
 
-### [Module 2.2 — Mathematical Well-Posedness](./module2.2/mod2p2.pdf)
+### [Module 2.2 — Mathematical Well-Posedness](./paper/module2.2/mod2p2.pdf)
 Proves the “Big Five” theorems:  
 - Positivity  
 - Existence & Uniqueness  
