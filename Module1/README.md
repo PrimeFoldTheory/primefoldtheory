@@ -59,3 +59,30 @@ If you have a LaTeX environment installed (e.g. TeX Live):
 
 ```bash
 latexmk -pdf Module1.tex
+
+## 📌 License
+
+Copyright © 2025 **Sean Sowden** — All rights reserved.
+
+This repository contains original theoretical work in progress under the
+Prime Fold framework, including terminology, structural models, symbolic
+definitions, and recursive formulations.
+
+Redistribution is permitted for:
+
+- Academic review  
+- Citation with attribution  
+- Endorsement requests  
+
+The following restrictions apply **until formal release**:
+
+- Public reuse of equations, terminology, or structural models is **not**
+  permitted  
+- Derivative works, translations, or republishing are **not** allowed  
+- Commercial use is **strictly prohibited**
+
+For full terms, see the [`LICENSE`](LICENSE) file in this repository.  
+To cite this work or request collaboration, visit  
+[https://primefoldtheory.org](https://primefoldtheory.org) or contact  
+`Sean@PrimeFoldTheory.org`.
+
