@@ -1,65 +1,149 @@
 # Prime Fold Theory — Research Modules
 
 **Author:** Sean Sowden  
-**Website:** [primefoldtheory.org](https://primefoldtheory.org)  
+**Website:** [primefoldtheory.org](https://primefoldtheory.org)
 
-Prime Fold Theory (PFT) reinterprets structural dynamics through three primitives:  
-- **Fold Density (Φ)** — local structural loading  
-- **Fold-Time (τ̄)** — tension accumulator with threshold reset  
-- **Threshold (κ)** — local collapse bound  
+Prime Fold Theory (PFT) is a structural ontology for physics that builds the
+universe from an information-zero baseline, rather than assuming spacetime,
+fields, or energy.
 
-The **Law of Structural Invariance** asserts conservation of the product Φτ̄ between events, 
-with resets at threshold crossings. This repo hosts the modular paper series that formalizes, 
-tests, and applies this framework.
+The hierarchy is:
+
+- **0D — Prime Substrate**  
+  Information-zero, no geometry, no time, no energy, no fields, no metrics.
+
+- **1D — Prime Fold**  
+  The first informational event (“power-on”), creating the arrow of time and
+  activating three primitives:
+  - Fold-Time **τ̄** — tension-like accumulation with reset at collapse,  
+  - Fold-Density **Φ** — informational/structural loading,  
+  - Threshold **κ** — local collapse bound.
+
+- **2D — Fold Field**  
+  A discrete relational surface where geometry emerges as a *behavior* of the
+  network (adjacency, distance, curvature-like patterns), not as a substance.
+
+- **3D — Shells and Skew (Gravity)**  
+  3D volume appears when regions of the Fold Field wrap or layer into shells.
+  Imperfect layering produces **skew** — a structural imbalance that radiates
+  outward with a natural \(1/r^2\) pattern. Gravity is interpreted as skew from
+  shells, rather than curvature of a fundamental spacetime.
+
+The traditional law-of-invariance program (Φτ̄ conservation between events with
+threshold resets) is preserved and developed in later modules, but now sits on
+top of this deeper ontological ladder.
 
 ---
 
 ## 📖 Modules
 
-### [Module 1 — Core Theory](./paper/module1/Mod1v2.pdf)
-Defines the Fold primitives (Φ, τ̄, κ), states the invariance law, introduces the Structural Recursive Field (SRF), and frames the math program.  
-*Type: Theory-first, conceptual groundwork.*
+### Module 1 — The Prime Substrate (2025 Ontology Rewrite)  
+
+**Status:** Current canonical foundation (see `module1/`).  
+
+Defines:
+
+- the Prime Substrate (0D, information-zero),
+- the Prime Fold as the unique first event (1D),
+- the Fold Field as the first geometric layer (2D),
+- shells and skew as the origin of 3D volume and gravity.
+
+Goals:
+
+- Show that geometry is **emergent**, not assumed.  
+- Show that curvature is **optional**; skew from shells is sufficient for
+  gravitational behavior.  
+- Place GR and QM as effective descriptions on top of the Fold hierarchy
+  (rather than competing foundations).
+
+**Type:** Ontology-first, theory foundation.
 
 ---
 
-### [Module 2.1 — Cross-System Simulation](./paper/module2.1/mod2p1.pdf)
-Stress-tests fold-time invariance across two toy systems (SRF lattice, quake toy), multiple dimensions, and parameter sweeps.  
-Results: normalized τ̄ cycles are invariant across systems, dimensions, and conditions.  
-*Type: Simulation study.*
+### Module 2.1 — Cross-System Simulation  
+
+**Status:** Simulation study (see `module2.1/` or `paper/` subtree if legacy).  
+
+Stress-tests Fold-Time invariance and threshold dynamics across multiple toy
+systems (e.g. SRF-like lattices, quake toys), dimensions, and parameter sweeps.
+
+Key results:
+
+- Normalized Fold-Time cycles (τ̄ with reset at κ) show structural invariance
+  across different systems and conditions.
+- Supports the idea that the Φ–τ̄–κ primitives behave consistently across
+  heterogeneous substrates once mapped into the Fold framework.
+
+**Type:** Simulation / numerical experiment.
 
 ---
 
-### [Module 2.2 — Mathematical Well-Posedness](./paper/module2.2/mod2p2.pdf)
-Proves the “Big Five” theorems:  
-- Positivity  
-- Existence & Uniqueness  
-- Budget Closure  
-- Reset Locality  
-- Anti-Zeno  
+### Module 2.2 — Mathematical Well-Posedness  
 
-Includes a numerical blueprint and a minimal reference solver with audit checks.  
-Artifacts:  
-- `fold_solver_1d.py` — reference solver  
-- `demo_plots.py` — plotting script  
-- `README_mod2p2_scripts.md` — usage notes  
-*Type: Mathematical foundation.*
+**Status:** Math foundation module (see `module2.2/` or `paper/`).  
+
+Establishes a rigorous backbone for Fold dynamics via the “Big Five” theorems:
+
+1. Positivity  
+2. Existence & Uniqueness  
+3. Budget Closure  
+4. Reset Locality  
+5. Anti-Zeno
+
+Includes:
+
+- a minimal reference solver (`fold_solver_1d.py`),
+- plotting / demo scripts,
+- notes on verification and audit structure.
+
+**Type:** Mathematical foundation and reference implementation.
 
 ---
 
-### [Module 5 — Quaoar: First Observable Fold-Shell Anomaly](./Module5/Module5.pdf)
-Applies Fold Gravity to Quaoar’s ring system beyond the Roche limit.  
-Result: ring location matches predicted fold-shell boundary; extends to Haumea and Chariklo.  
-*Type: Empirical application.*
+### Module 5 — Quaoar: First Observable Fold-Shell Anomaly  
+
+**Status:** Empirical application (see `paper/` subtree).  
+
+Applies Fold gravity / shell-skew interpretation to Quaoar’s ring system beyond
+the Roche limit.
+
+Results:
+
+- The ring location matches a predicted Fold-shell boundary rather than a
+  classical Roche limit constraint.
+- Extension of the same reasoning to Haumea and Chariklo suggests a wider class
+  of ring–shell anomalies.
+
+**Type:** Observational test / case study.
+
+---
+
+### Legacy / SRF-Era Drafts
+
+Earlier drafts and SRF-centric formulations (e.g. the original Module 1 focused
+on the “Structural Recursive Field”) are preserved under the `paper/` directory
+for historical and comparison purposes. These represent the 2024-era framing
+prior to the Prime Substrate / Prime Fold / Fold Field ontology rewrite.
 
 ---
 
 ## 🔗 Resources
-- Website: [primefoldtheory.org](https://primefoldtheory.org)  
-- Contact: sean@primefoldtheory.org  
+
+- **Website:** [primefoldtheory.org](https://primefoldtheory.org)  
+- **Contact:** `sean@primefoldtheory.org`
 
 ---
 
 ## 📌 License
-© 2025 Sean Sowden. Licensed under **CC BY–NC 4.0**.  
-You are free to share and adapt the work with attribution, for non-commercial purposes.  
-See [LICENSE](https://creativecommons.org/licenses/by-nc/4.0/) for details.
+
+Unless otherwise noted in a module’s own `LICENSE` file:
+
+- © 2025 **Sean Sowden**.  
+- Licensed under **CC BY–NC 4.0**.
+
+You are free to share and adapt the work with attribution, for non-commercial
+purposes. See `LICENSE` in the root of this repository for full terms.
+
+Individual submodules (for example, `module1/`) may specify stricter licensing
+(e.g. “All rights reserved”) while under active development. In such cases, the
+per-module `LICENSE` governs that module’s contents.
