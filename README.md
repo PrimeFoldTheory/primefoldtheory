@@ -37,7 +37,7 @@ top of this deeper ontological ladder.
 
 ## 📖 Modules
 
-### Module 1 — The Prime Substrate (2025 Ontology Rewrite)  
+### Module 1 — The Prime Substrate (2025 Ontology Rewrite)
 
 **Status:** Current canonical foundation (see `module1/`).  
 
@@ -60,7 +60,7 @@ Goals:
 
 ---
 
-### Module 2.1 — Cross-System Simulation  
+### Module 2.1 — Cross-System Simulation
 
 **Status:** Simulation study (see `module2.1/` or `paper/` subtree if legacy).  
 
@@ -78,7 +78,7 @@ Key results:
 
 ---
 
-### Module 2.2 — Mathematical Well-Posedness  
+### Module 2.2 — Mathematical Well-Posedness
 
 **Status:** Math foundation module (see `module2.2/` or `paper/`).  
 
@@ -100,7 +100,7 @@ Includes:
 
 ---
 
-### Module 5 — Quaoar: First Observable Fold-Shell Anomaly  
+### Module 5 — Quaoar: First Observable Fold-Shell Anomaly
 
 **Status:** Empirical application (see `paper/` subtree).  
 
@@ -130,20 +130,32 @@ prior to the Prime Substrate / Prime Fold / Fold Field ontology rewrite.
 ## 🔗 Resources
 
 - **Website:** [primefoldtheory.org](https://primefoldtheory.org)  
-- **Contact:** `sean@primefoldtheory.org`
+- **Contact:** `Sean@PrimeFoldTheory.org`
 
 ---
 
 ## 📌 License
 
-Unless otherwise noted in a module’s own `LICENSE` file:
+Copyright © 2025 **Sean Sowden** — All rights reserved.
 
-- © 2025 **Sean Sowden**.  
-- Licensed under **CC BY–NC 4.0**.
+This repository contains original theoretical work in progress under the
+Prime Fold framework, including terminology, structural models, symbolic
+definitions, and recursive formulations.
 
-You are free to share and adapt the work with attribution, for non-commercial
-purposes. See `LICENSE` in the root of this repository for full terms.
+Redistribution is permitted for:
 
-Individual submodules (for example, `module1/`) may specify stricter licensing
-(e.g. “All rights reserved”) while under active development. In such cases, the
-per-module `LICENSE` governs that module’s contents.
+- Academic review  
+- Citation with attribution  
+- Endorsement requests  
+
+The following restrictions apply **until formal release**:
+
+- Public reuse of equations, terminology, or structural models is **not**
+  permitted  
+- Derivative works, translations, or republishing are **not** allowed  
+- Commercial use is **strictly prohibited**
+
+For full terms, see the [`LICENSE`](LICENSE) file in this repository.  
+To cite this work or request collaboration, visit  
+[https://primefoldtheory.org](https://primefoldtheory.org) or contact  
+`Sean@PrimeFoldTheory.org`.
