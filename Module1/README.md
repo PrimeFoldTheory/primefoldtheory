@@ -52,14 +52,6 @@ minimal structural steps:
 - `LICENSE` — Current licensing (all rights reserved).
 
 ---
-
-## Building the PDF
-
-If you have a LaTeX environment installed (e.g. TeX Live):
-
-```bash
-latexmk -pdf Module1.tex
-
 ## 📌 License
 
 Copyright © 2025 **Sean Sowden** — All rights reserved.
@@ -86,3 +78,9 @@ To cite this work or request collaboration, visit
 [https://primefoldtheory.org](https://primefoldtheory.org) or contact  
 `Sean@PrimeFoldTheory.org`.
 
+---
+## Building the PDF
+
+If you have a LaTeX environment installed (e.g. TeX Live):
+
+```bash
